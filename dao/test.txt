@@ -1,0 +1,2 @@
+DAO là data access object
+--> chứa các đối tượng tương tác trực tiếp với database
