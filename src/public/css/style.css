@@ -1,3 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+
+  }
+@media (max-width: 768px) {
+  
+}
+@media (max-width: 576px) {
+  
+}
+
+
+/*---Firefox Bug Fix --*/
+.carousel-item {
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+/*--- Fixed Background Image --*/
+figure {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  margin: 0!important;
+}
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#fixed {
+  background-image: url('img/mac.png');
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+}
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
+}
+
+
+footer {
+    background: #154763;
+    padding: 10px 0;
+    position: relative;
+    z-index: 10;
+    --smooth: all 0.3s ease-in;
+}
+
+#footer-link:hover {
+    color: #a7a6a6;
+    transition: var(--smooth);
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
 body{
     font-family: "Montserrat";
     text-align: center;
@@ -43,7 +123,7 @@ h1,h2,h3,h4,h5,h6{
     color: black;
 }
 .navbar-toggler-icon{
-    background-color: violet;
+    background-color: #154763;
 }
 
     /* Button */
