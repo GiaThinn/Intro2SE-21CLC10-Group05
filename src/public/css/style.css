@@ -51,7 +51,7 @@ figure {
 }
 /*--- Bootstrap Padding Fix --*/
 [class*="col-"] {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 
@@ -63,9 +63,14 @@ footer {
     --smooth: all 0.3s ease-in;
 }
 
-#footer-link:hover {
+.footer-link {
+    text-decoration: none;
+}
+
+.footer-link:hover {
     color: #a7a6a6;
     transition: var(--smooth);
+    text-decoration: underline;
 }
 
 hr {
@@ -88,6 +93,17 @@ h1,h2,h3,h4,h5,h6{
     font-family: 'Montserrat', sans-serif;
 
 }
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
 /* Navigation Bar */
 
 .header-logo{
@@ -121,7 +137,25 @@ h1,h2,h3,h4,h5,h6{
     font-family: "Montserrat";
     font-weight: 400;
     color: black;
+    position: relative;
 }
+
+.nav-link::after {
+    opacity: 0;
+    content: '';
+    height: 2px;
+    width: 100%;
+    background-color: #154763;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s;
+}
+
+.nav-link:hover::after {
+    opacity: 1;
+}
+
 .navbar-toggler-icon{
     background-color: #154763;
 }
