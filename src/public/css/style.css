@@ -4,51 +4,110 @@
 @media (max-width: 992px) {
 
   }
-@media (max-width: 768px) {
-  
+@media (min-width: 768px) {
+  #list-slider .carousel-item {
+    margin-right: 0;
+    flex: 0 0 20%;
+    display: block;
+  }
+
+  #list-slider .carousel-inner {
+    display: flex;
+  }
 }
+
+@media (max-width: 767px) {
+    .card .card-img {
+        height: 17em;
+    }
+}
+
 @media (max-width: 576px) {
   
+}
+
+/* Carousel Styling */
+.carousel-inner {
+    padding: 1em;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: #e1e1e1;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Home Page Styling */
+
+#list-slider .card {
+    margin: 0 1em;
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    border: none;
+    width: 20em;
+}
+
+#list-slider .card .card-img {
+    max-width: 100%;
+    height: 13em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#list-slider .card img {
+    max-height: 100%;
+}
+
+#list-slider {
+    border-bottom: 1px dashed #154763;
+}
+
+.home-page-news {
+    margin: 0 1em;
+    border-top: 1px dotted #154763;
 }
 
 
 /*---Firefox Bug Fix --*/
 .carousel-item {
-  transition: -webkit-transform 0.5s ease;
-  transition: transform 0.5s ease;
-  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
 }
-/*--- Fixed Background Image --*/
+/* --- Fixed Background Image --
 figure {
-  position: relative;
-  width: 100%;
-  height: 60%;
-  margin: 0!important;
+    position: relative;
+    width: 100%;
+    height: 60%;
+    margin: 0!important;
 }
 .fixed-wrap {
-  clip: rect(0, auto, auto, 0);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    clip: rect(0, auto, auto, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 #fixed {
-  background-image: url('img/mac.png');
-  position: fixed;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-  will-change: transform;
-}
+    background-image: url('img/mac.png');
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    will-change: transform;
+} */
 /*--- Bootstrap Padding Fix --*/
 [class*="col-"] {
     padding: 1.5rem;
@@ -63,6 +122,8 @@ footer {
     --smooth: all 0.3s ease-in;
 }
 
+/* Footer */
+
 .footer-link {
     text-decoration: none;
 }
@@ -72,6 +133,8 @@ footer {
     transition: var(--smooth);
     text-decoration: underline;
 }
+
+/* End of Footer */
 
 hr {
     display: block;
@@ -102,6 +165,13 @@ h1,h2,h3,h4,h5,h6{
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #154763;
 }
 
 /* Navigation Bar */
@@ -178,4 +248,9 @@ h1,h2,h3,h4,h5,h6{
         background-color: #66D39F;
         margin:0 10px;
     }
+
+nav {
+    border-bottom: 1px solid #154763;
+}
+/* End of Navbar */
 
