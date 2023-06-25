@@ -3,21 +3,6 @@ $(document).ready(function () {
     var listSlider = document.querySelectorAll('#list-slider .carousel');
 
     if (window.matchMedia("(min-width: 768px)").matches) {
-        // items.forEach((el) => {
-        //     const minPerSlide = 4
-        //     let next = el.nextElementSibling
-        //     for (var i = 1; i < minPerSlide; i++) {
-        //         if (!next) {
-        //             // wrap carousel by using first child
-        //             next = items[0]
-        //         }
-        //         let cloneChild = next.cloneNode(true)
-        //         el.appendChild(cloneChild.children[0])
-        //         next = next.nextElementSibling
-        //     }
-        // })
-
-
         var carousel = new bootstrap.Carousel(listSlider[0], {interval: false,});
         var carouselWidth = $('#list-slider .carousel-inner')[0].scrollWidth;
         var cardWidth = $('#list-slider .carousel-item').width();
@@ -37,4 +22,7 @@ $(document).ready(function () {
             }
         });
     }
+
+
+
 });
