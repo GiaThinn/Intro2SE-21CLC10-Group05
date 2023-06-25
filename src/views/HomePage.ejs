@@ -44,17 +44,17 @@
 <div id="list-slider" class="carousel" data-bs-ride="carousel">
     <p class="text-center heading pt-4">DANH SÁCH CƠ SỞ KHÁM CHỮA BỆNH</p>
     <div class="carousel-inner">
-        <% for (var i=1; i<=9; i++) { %>
+        <% news.forEach((item, i) => { %>
             <div class="carousel-item  <%=(i == 1)? 'active' : '' %> d-flex align-items-center justify-content-center">
                 <div class="card">
-                    <div class="card-img"><img src="https://via.placeholder.com/300x500.png/DDBEA9/333333?text=<%=i %>" class="d-block w-100" alt="Image <%=i %>"></div>
+                    <div class="card-img"><img src=item.image.uri class="d-block w-100" alt="Image <%=i %>"></div>
                     <div class="card-body">
-                        <a class="card-title h5 text-decoration-none" href="#">Card title <%=i %></a>
+                        <a class="card-title h5 text-decoration-none" href="#">item.image.caption</a>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis lorem blandit, elementum nunc vitae, malesuada magna</p>
                     </div>
                 </div>
             </div>
-        <% } %>
+        <% }) %>
     </div>
 
     <!-- Control -->
