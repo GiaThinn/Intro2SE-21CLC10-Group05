@@ -258,8 +258,8 @@ nav {
     background-size: cover;
     min-height: 30vh;
     position: relative;
-    color: #362a2a;
-    text-shadow: 2px 2px 2px rgba(0,0,0,.2) ;
+    color: #000000;
+    text-shadow: 2px 2px 2px rgba(0,0,0,.2);
 }
 
 .color-overlay{
@@ -273,3 +273,17 @@ nav {
         min-height: 20vh; 
     }
 }
+
+.building-img{
+    width: 70%;
+    height: 70%;
+    margin-left: -20px;
+}
+.list-group-flush{
+    margin-left: -120px;
+    margin-top: -30px;
+}
+.card{
+    border-radius: 5%;
+}
+/* End of Partnership page  */
