@@ -12,5 +12,5 @@ const NewsSchema = new mongoose.Schema({
     publishedDate: Date
 });
 
-const News = mongoose.model("News", NewsSchema);
+const News = mongoose.model("news", NewsSchema);
 module.exports = News;
