@@ -4,6 +4,7 @@
     <p class="text-center heading pt-4">DANH SÁCH PHÒNG KHÁM</p>
     <hr>
     <div class="row">
+        <!-- Search Bar -->
         <div class="col-md-3" style="border-right: 1px groove black;">
             <div class="d-flex align-items-center">
                 <input class="form-control" id="search-input" type="text" placeholder="Tìm kiếm...">
@@ -20,22 +21,30 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-9 d-flex justify-content-center">
-            <div class="col-md-4 hospital-img">
-                <img src="https://via.placeholder.com/350x200.png/DDBEA9/333333?text=News" alt="News 2" class="img-fluid">
-            </div>
-            <div class="col-md-8 hospital-caption text-start">
-                <div class="hospital-title">
-                    <a href="#" class="text-decoration-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+
+        <!-- List -->
+        <div class="col-md-9 hospital-list-container">
+            <% locals.items.forEach(function(item, idx) { %>
+                <div class="row hospital-item d-flex">
+                    <div class="col-md-4 hospital-img">
+                        <img src="<%= item.image.url %>" alt="Image <%= idx + 1 %>" class="img-fluid">
+                    </div>
+                    <div class="col-md-8 hospital-caption text-start">
+                        <div class="hospital-title">
+                            <a class="text-decoration-none"><%= item.name %></a>
+                        </div>
+                        <div class="hospital-location">
+                            <p>By <a><%= item.location %></a> | <%= item.date %></p>
+                        </div>
+                        <div class="news-description">
+                            <p><%= item.description %></p>
+                        </div>
+                        <div class="hospital-link">
+                            <a href="<%= item.website %>" class="text-decoration-none text-end" style="font-size: 0.8rem;">Đọc thêm</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="news-author">
-                    <p>By <a>Admin</a> | 1/1/2024</p>
-                </div>
-                <div class="news-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis lorem blandit, elementum nunc vitae, malesuada magna</p>
-                </div>
-                <div class="news-link"><a href="#" class="text-decoration-none text-end" style="font-size: 0.8rem;">Đọc thêm</a></div>
-            </div>
+            <% }); %>
         </div>
 
     </div>
@@ -49,11 +58,9 @@
                 <span aria-hidden="true">«</span>
             </a>
         </li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <% for (let i = 1; i <= locals.totalPages; i++) { %>
+            <li class="page-item <%=(i == 1)? 'active' : '' %>"><a class="page-link" href="#"><%= i %></a></li>
+        <% } %>
         <li class="pgn-control pgn-next">
             <a href="#" class="page-link">
                 <span aria-hidden="true">»</span>

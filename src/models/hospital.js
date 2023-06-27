@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const HospitalSchema = new mongoose.Schema({
-    username: String,
     idHospital: Number,
     name: String,
     location: String,
@@ -12,8 +11,12 @@ const HospitalSchema = new mongoose.Schema({
     specialist: {
         specName: String,
         specDescription: String
-    } 
+    },
+    image: {
+        url: String,
+        caption: String
+    }
 });
 
-const Hospital = mongoose.model("hospital", HospitalSchema);
+const Hospital = mongoose.model("hospitals", HospitalSchema);
 module.exports = Hospital;

@@ -14,6 +14,7 @@ router.get('/', newsController.getLastestNews);
 
 // Hospital List
 router.get('/hospital-list', hospitalListController.getHospitalList);
+router.get('/hospital-list/query', hospitalListController.getHospitalListbyQuery);
 
 
 module.exports = router;
