@@ -6,11 +6,11 @@ const NewsSchema = new mongoose.Schema({
     content: String,
     description: String,
     image: {
-        uri: String,
+        url: String,
         caption: String
     },
     publishedDate: Date
 });
 
-const News = mongoose.model("News", NewsSchema);
+const News = mongoose.model("news", NewsSchema);
 module.exports = News;

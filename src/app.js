@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const getLastestNews = require("./controllers/newsController");
+const routes = require("./routes/routes");
 
 const app = express();
 
@@ -26,17 +26,8 @@ db.once("open", () => {
   console.log("Connected successfully");
 });
 
+app.use("/", routes);
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-});
-
-app.get('/', async (req, res) => {
-  try {
-    const limit = 10;
-    const news = await getLastestNews(limit);
-
-    res.render('HomePage', {news: news});
-  } catch (err) {
-    throw new Error("Failed to retrieve home page's data");
-  }
 });
