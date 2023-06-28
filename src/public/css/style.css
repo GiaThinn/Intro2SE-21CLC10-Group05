@@ -330,8 +330,8 @@ h6 {
 @media (max-width: 768px){
     .masthead{
         min-height: 20vh; 
-} 
-
+    } 
+}
 
 /* Hospital List */
 #hospital-list hr {
