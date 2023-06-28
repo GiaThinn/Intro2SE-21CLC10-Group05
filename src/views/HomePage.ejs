@@ -44,17 +44,6 @@
 <div id="list-slider" class="carousel" data-bs-ride="carousel">
     <p class="text-center heading pt-4">DANH SÁCH CƠ SỞ KHÁM CHỮA BỆNH</p>
     <div class="carousel-inner">
-        <% news.forEach((item, i) => { %>
-            <div class="carousel-item  <%=(i == 1)? 'active' : '' %> d-flex align-items-center justify-content-center">
-                <div class="card">
-                    <div class="card-img"><img src="<%= item.image.url %>" class="d-block w-100" alt="Image <%=i %>"></div>
-                    <div class="card-body">
-                        <a class="card-title h5 text-decoration-none" href="#"><%= item.image.caption %></a>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis lorem blandit, elementum nunc vitae, malesuada magna</p>
-                    </div>
-                </div>
-            </div>
-        <% }) %>
     </div>
 
     <!-- Control -->
@@ -73,14 +62,26 @@
     <p class="text-center heading mb-0">TIN TỨC</p>
     <div class="row">
         <div class="col-md-5" style="border-right: 1px groove black;">
-            <div class="home-page-news">
-                
+            <div class="home-page-news align-items-center pb-4" style="border-top: none!important;">
+                <img src="https://via.placeholder.com/300x500.png/DDBEA9/333333?text=News" alt="News 1" class="img-fluid" style="max-width: 350px;">
+                <div class="text-start pt-3">
+                    <div class="news-title">
+                        <a href="#" class="text-decoration-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                    </div>
+                    <div class="news-author">
+                        <p>By <a>Admin</a> | 1/1/2024</p>
+                    </div>
+                    <div class="news-description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis lorem blandit, elementum nunc vitae, malesuada magna</p>
+                    </div>
+                    <div class="news-link"><a href="#" class="text-decoration-none text-end" style="font-size: 0.8rem;">Đọc thêm</a></div>
+                </div>
             </div>
         </div>
         <div class="col-md-7">
-            <div class="home-page-news d-flex pb-4">
-                <div class="col-md-4 news-img">
-                    <img src="https://via.placeholder.com/200x200.png/DDBEA9/333333?text=News" alt="News 1" class="img-fluid">
+            <div class="home-page-news d-flex">
+                <div class="col-md-4 news-img d-flex flex-column justify-content-center">
+                    <img src="https://via.placeholder.com/300x400.png/DDBEA9/333333?text=News" alt="News 1" class="img-fluid">
                 </div>
                 <div class="col-md-8 news-caption text-start">
                     <div class="news-title">
@@ -96,8 +97,8 @@
                 </div>
             </div>
             <div class="home-page-news d-flex">
-                <div class="col-md-4 news-img">
-                    <img src="https://via.placeholder.com/200x200.png/DDBEA9/333333?text=News" alt="News 2" class="img-fluid">
+                <div class="col-md-4 news-img d-flex flex-column justify-content-center">
+                    <img src="https://via.placeholder.com/300x350.png/DDBEA9/333333?text=News" alt="News 2" class="img-fluid">
                 </div>
                 <div class="col-md-8 news-caption text-start">
                     <div class="news-title">

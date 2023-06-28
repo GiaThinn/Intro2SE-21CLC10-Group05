@@ -10,7 +10,12 @@ router.get('/partnership', (req, res) => {
 });
 
 // Home
-router.get('/', newsController.getLastestNews);
+router.get('/', (req, res) => {
+    res.render('HomePage');
+});
+
+
+router.get('/latest-news', newsController.getLastestNews);
 
 // Hospital List
 router.get('/hospital-list', hospitalListController.getHospitalList);

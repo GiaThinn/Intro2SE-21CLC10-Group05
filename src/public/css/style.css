@@ -64,12 +64,19 @@
 }
 
 #list-slider {
-    border-bottom: 1px dashed #154763;
+    border-bottom: 1px solid #154763;
 }
 
 .home-page-news {
     margin: 0 1em;
-    border-top: 1px dotted #154763;
+    border-top: 1px solid #154763;
+}
+
+.home-page-news img {
+    height: auto;
+    width: auto;
+    max-width: 250px;
+    max-height: 250px;
 }
 
 
