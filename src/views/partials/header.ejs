@@ -35,44 +35,69 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <!-- End of Script -->
-
-  <nav class="navbar sticky-top navbar-expand-lg">
-    <a class="navbar-brand" href="#title"><img class="header-logo" src="../../public/images/Logo-header.png" alt=""></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarToggler">
-
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home Page</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Guideline</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">News</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Partnership</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Hospital</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">FAQs</a>
-        </li>
-      </ul>
-
-      <div class="login-button">
-        <button type="button" class="btn btn-light btn-log btn-signin">Sign In</button>
-        <button type="button" class="btn btn-light btn-log btn-signup">Sign Up</button>
-      </div>
-
-    </div>
-
-
-  </nav>
+  <div id="container-navbar">
+    <nav class="navbar navbar-expand-xl">
+      <a class="navbar-brand" href="#title"><img class="header-logo" src="../../public/images/Logo-header.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+        <span class="navbar-toggler-icon">   
+          <i class="fas fa-bars" style="color:black; font-size:28px;"></i>
+        </span>
+      </button>
+        
+        
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <div>
+            <div class="container-profile">
+              <div class="profile-navbar">
+                <i class="fa-solid fa-user fa-2xl"></i>
+                <p class="para-login">Guest | <a href="#">Log in</a></p>
+                
+              </div>
+            </div>
+            <div>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Guideline</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">News</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Partnership</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Hospital</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">FAQs</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      
+      
+    </nav>
+  </div>
+  
+  <script>
+      var prevScrollpos = window.scrollY;
+      window.onscroll = function () {
+        var currentScrollPos = window.scrollY;
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("container-navbar").style.top = "0";
+          document.getElementById("navbarToggler").style.top = "0";
+        } else {
+          document.getElementById("container-navbar").style.top = "-100%";
+          document.getElementById("navbarToggler").style.top = "-100%";
+        }
+        prevScrollpos = currentScrollPos;
+}
+  </script>
+  <!-- <script type="text/javascript" src="../public/js/homePage.js"></script> -->
