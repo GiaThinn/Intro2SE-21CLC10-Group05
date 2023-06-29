@@ -9,6 +9,12 @@ router.get('/partnership', (req, res) => {
     res.render('Partnership');
 });
 
+
+// Login
+router.get('/login', (req, res) => {
+    res.render('Login');
+});
+
 // Home
 router.get('/', newsController.getLastestNews);
 
