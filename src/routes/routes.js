@@ -9,10 +9,14 @@ router.get('/partnership', (req, res) => {
     res.render('Partnership');
 });
 
-
 // Login
 router.get('/login', (req, res) => {
     res.render('Login');
+});
+
+// Signup
+router.get('/signup', (req, res) => {
+    res.render('Signup');
 });
 
 // Home
