@@ -6,6 +6,8 @@ const app = express();
 
 const PORT = "6969";
 
+// var path = require ('path');
+// app.use('/static',express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static('public'));
 // app.use(express.static("views"));
 app.set('view engine', 'ejs');
