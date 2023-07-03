@@ -12,6 +12,8 @@ router.get('/partnership', (req, res) => {
 // Home
 router.get('/', newsController.getLastestNews);
 
+router.get('/latest-news', newsController.getLastestNews);
+
 // Hospital List
 router.get('/hospital-list', hospitalListController.getHospitalList);
 router.get('/hospital-list/query', hospitalListController.getHospitalListbyQuery);
