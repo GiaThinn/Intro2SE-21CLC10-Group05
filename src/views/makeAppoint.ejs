@@ -1,0 +1,82 @@
+<%- include("partials/header"); %>
+<!-- =========== Topic Sentence ============= -->
+<section id="topic-section">
+    <div class="container-topic">
+        <div class="topic-guide">
+            <p id="p-topic">Vui lòng chọn bệnh viện.</p>
+        </div>
+    </div>
+</section>
+    
+<!-- =========== List Hospital to choose ============= -->
+<section id="pickHos-section">
+    <div class="container-pickHos">
+        <div class="pickHos">
+            <!-- =========== Search and Filter card ============= -->
+            <div class="container-card">
+                <div class="listCard">
+                    <div class="searchBar">
+                        <div class="form-inputs">
+                            <input class="form-control" type="text" placeholder="Tìm kiếm tên bệnh viện">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="filterBar">
+                        <div class="dropdown">
+                            <button class="btn default btn-filterCity" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <p class="dropdown-text">
+                                    Tìm kiếm bệnh viện theo Thành Phố   
+                                </p>
+                                <i class="fa-solid fa-caret-down fa-lg"  style="margin: auto 0 auto auto;"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Thành phố Hồ Chí Minh</a></li>
+                              <li><a class="dropdown-item" href="#">Thủ đô Hà Nội</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Sóc Trăng</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Long An</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Lâm Đồng</a></li>
+                              <li><a class="dropdown-item" href="#">Thành phố Hồ Chí Minh</a></li>
+                              <li><a class="dropdown-item" href="#">Thủ đô Hà Nội</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Sóc Trăng</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Long An</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Lâm Đồng</a></li>
+                              <li><a class="dropdown-item" href="#">Thành phố Hồ Chí Minh</a></li>
+                              <li><a class="dropdown-item" href="#">Thủ đô Hà Nội</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Sóc Trăng</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Long An</a></li>
+                              <li><a class="dropdown-item" href="#">Tỉnh Lâm Đồng</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- =========== Hospital List ============= -->
+            <div class="container-list" style="width: 80%; margin: auto;">
+                <div class="listRow">
+                    <div class="container-singleHos">
+                        <div class="singleHospital">
+                            <div class="hosLogo">
+                                <img src="#" alt="">
+                            </div>
+                            <div class="hosInfo">
+                                <p>Name</p>
+                                <p>Address</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".dropdown-menu li").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+<%- include("partials/footer"); %>
