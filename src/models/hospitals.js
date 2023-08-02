@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
 const HospitalSchema = new mongoose.Schema({
-    idHospital: Number,
+    username: String,
+    hospitalID: String,
     name: String,
     location: String,
+    city: String,
     contactNumber: String,
     email: String,
     website: String,
@@ -12,10 +14,7 @@ const HospitalSchema = new mongoose.Schema({
         specName: String,
         specDescription: String
     },
-    image: {
-        url: String,
-        caption: String
-    }
+    image: String
 });
 
 const Hospital = mongoose.model("hospitals", HospitalSchema);

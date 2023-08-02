@@ -20,8 +20,15 @@ router.get('/latest-news', newsController.getLastestNews);
 router.get('/hospital-list', hospitalListController.getHospitalList);
 router.get('/hospital-list/query', hospitalListController.getHospitalListbyQuery);
 
-// Making Appointment
-router.get('/makeappoint', (req, res) => {
-    res.render('makeAppoint');
+// Login
+router.get('/login', (req, res) => {
+    res.render('Login');
 });
+
+// Sign up
+router.get('/signup', (req, res) => {
+    res.render('signUp');
+});
+
+
 module.exports = router;

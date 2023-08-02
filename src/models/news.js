@@ -4,11 +4,7 @@ const NewsSchema = new mongoose.Schema({
     title: String,
     author: String,
     content: String,
-    description: String,
-    image: {
-        url: String,
-        caption: String
-    },
+    image: String,
     publishedDate: Date
 });
 

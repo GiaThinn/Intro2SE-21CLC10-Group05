@@ -1,6 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes/routes");
+const guestRoute = require("./routes/guestRoute");
+const adminRoute = require("./routes/adminRoute");
+const hospitalRoute = require("./routes/hospitalRoute");
+const patientRoute = require("./routes/patientRoute");
 
 const app = express();
 
@@ -26,7 +29,10 @@ db.once("open", () => {
   console.log("Connected successfully");
 });
 
-app.use("/", routes);
+app.use("/", guestRoute);
+app.use("/", patientRoute);
+app.use("/admin", adminRoute);
+app.use("/hospital", hospitalRoute);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
