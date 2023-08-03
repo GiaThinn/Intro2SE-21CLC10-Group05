@@ -30,5 +30,18 @@ router.get('/signup', (req, res) => {
     res.render('signUp');
 });
 
+//News
+router.get('/news', (req, res) => {
+    res.render('NewsPage');
+});
 
+// SingleNews
+router.get('/single-news', (req, res) => {
+    res.render('OnlyNews');
+});
+
+//AddContract
+router.get('/contract-us', (req, res) => {
+    res.render('AddContract');
+});
 module.exports = router;
