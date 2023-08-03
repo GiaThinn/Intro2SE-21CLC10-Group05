@@ -55,3 +55,9 @@ body {
 ul {
   list-style-type: none;
 }
+.list-group-item-avatar {
+  padding-right: 1rem;
+}
+.card {
+  width: 200px;
+}
