@@ -986,7 +986,7 @@ h6 {
 .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: left;
     color: white;
 }
 
@@ -1044,7 +1044,7 @@ h6 {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
         justify-content: center;
         margin-top: 0px;
@@ -1061,7 +1061,7 @@ h6 {
     }
 
     .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
-        margin: 0 0 40px 0;
+        margin: 0 0 60px 0;
     }
 }
 
