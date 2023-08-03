@@ -1,9 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require("express-session")
+const MongoDBSession = require("connect-mongodb-session")(session);
 const guestRoute = require("./routes/guestRoute");
 const adminRoute = require("./routes/adminRoute");
 const hospitalRoute = require("./routes/hospitalRoute");
 const patientRoute = require("./routes/patientRoute");
+const sessionHandler = require("./middleware/session");
+const auth = require("./middleware/authentication");
 
 const app = express();
 
@@ -15,13 +19,31 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 
 // Connect to MongoDB
+const mongoURI = `mongodb+srv://thieuquanlac:iMyQSZ5ZQLsYnJMb@cluster0.eezcbqy.mongodb.net/HealthUs?retryWrites=true&w=majority`
 mongoose.connect(
-    `mongodb+srv://thieuquanlac:iMyQSZ5ZQLsYnJMb@cluster0.eezcbqy.mongodb.net/HealthUs?retryWrites=true&w=majority`, 
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }
-  );
+  mongoURI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+);
+
+// Session
+const store = new MongoDBSession({
+  uri: mongoURI,
+  collection: "sessions"
+})
+
+app.use(session({
+  secret: 'healthUS',
+  resave: false,
+  saveUninitialized: false,
+  store: store,
+  cookie: {
+    secure: false,
+    maxAge: 1000 * 60 * 60
+  }
+}))
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
@@ -29,11 +51,15 @@ db.once("open", () => {
   console.log("Connected successfully");
 });
 
+// Session timeout
+// app.use(sessionHandler.lastActive);
+
+// Routes
 app.use("/", guestRoute);
 app.use("/", patientRoute);
-app.use("/admin", adminRoute);
+app.use("/admin", auth.adminAuth, adminRoute);
 app.use("/hospital", hospitalRoute);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
