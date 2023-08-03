@@ -57,7 +57,8 @@ db.once("open", () => {
 // Routes
 app.use("/", guestRoute);
 app.use("/", patientRoute);
-app.use("/admin", auth.adminAuth, adminRoute);
+// app.use("/admin", auth.adminAuth, adminRoute);
+app.use("/admin", adminRoute);
 app.use("/hospital", hospitalRoute);
 
 app.listen(PORT, () => {
