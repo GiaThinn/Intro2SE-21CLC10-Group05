@@ -5,6 +5,7 @@ const newsController = require("../controllers/newsController");
 const hospitalController = require("../controllers/hospitalController");
 const authController = require("../controllers/authController");
 
+
 // Partnership
 router.get('/partnership', (req, res) => {
     res.render('Partnership');

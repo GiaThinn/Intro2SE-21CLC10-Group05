@@ -1,82 +1,531 @@
 <%- include("partials/header"); %>
-<!-- =========== Topic Sentence ============= -->
-<section id="topic-section">
-    <div class="container-topic">
-        <div class="topic-guide">
-            <p id="p-topic">Vui lòng chọn bệnh viện.</p>
-        </div>
-    </div>
-</section>
-    
-<!-- =========== List Hospital to choose ============= -->
-<section id="pickHos-section">
-    <div class="container-pickHos">
-        <div class="pickHos">
-            <!-- =========== Search and Filter card ============= -->
-            <div class="container-card">
-                <div class="listCard">
-                    <div class="searchBar">
-                        <div class="form-inputs">
-                            <input class="form-control" type="text" placeholder="Tìm kiếm tên bệnh viện">
-                            <i class="fa fa-search"></i>
+
+    <!-- =========================================================================CONTAINER -->
+    <div class="container-making-form align-items-center min-vh-100">
+        <div class="row g-0 justify-content-center">
+            <!-- ======================================================================================TITLE -->
+            <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+                <div id="title-container">
+                    <!-- <img class="bg-title" src="img/background.jpg" alt=""> -->
+                    <img class="logo-image" src="../public/images/logo.png">
+                    <h2>MAKING APPOINTMENT</h2>
+                    <p>
+                        Our mission is to assist you in completing
+                        online medical registration regardless of your location.
+                    </p>
+                    <div class="step-container">
+                        <div class="vertical-line"></div>
+                        <div class="circle-container">
+                            <div class="circle"></div>
+                            <div class="line">Step 1: Select A Medical Profile</div>
                         </div>
-                    </div>
-                    <div class="filterBar">
-                        <div class="dropdown">
-                            <button class="btn default btn-filterCity" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <p class="dropdown-text">
-                                    Tìm kiếm bệnh viện theo Thành Phố   
-                                </p>
-                                <i class="fa-solid fa-caret-down fa-lg"  style="margin: auto 0 auto auto;"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Thành phố Hồ Chí Minh</a></li>
-                              <li><a class="dropdown-item" href="#">Thủ đô Hà Nội</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Sóc Trăng</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Long An</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Lâm Đồng</a></li>
-                              <li><a class="dropdown-item" href="#">Thành phố Hồ Chí Minh</a></li>
-                              <li><a class="dropdown-item" href="#">Thủ đô Hà Nội</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Sóc Trăng</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Long An</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Lâm Đồng</a></li>
-                              <li><a class="dropdown-item" href="#">Thành phố Hồ Chí Minh</a></li>
-                              <li><a class="dropdown-item" href="#">Thủ đô Hà Nội</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Sóc Trăng</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Long An</a></li>
-                              <li><a class="dropdown-item" href="#">Tỉnh Lâm Đồng</a></li>
-                            </ul>
+                        <div class="circle-container">
+                            <div class="circle"></div>
+                            <div class="line">Step 2: Select A Hospital</div>
+                        </div>
+                        <div class="circle-container">
+                            <div class="circle"></div>
+                            <div class="line">Step 3: Select A Specialist</div>
+                        </div>
+                        <div class="circle-container">
+                            <div class="circle"></div>
+                            <div class="line">Step 4: Select A Doctor</div>
+                        </div>
+                        <div class="circle-container">
+                            <div class="circle"></div>
+                            <div class="line">Step 5: Select A Date For Appointment</div>
+                        </div>
+                        <div class="circle-container">
+                            <div class="circle"></div>
+                            <div class="line">Step 6: Confirm The Registration Form</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- =========== Hospital List ============= -->
-            <div class="container-list" style="width: 80%; margin: auto;">
-                <div class="listRow">
-                    <div class="container-singleHos">
-                        <div class="singleHospital">
-                            <div class="hosLogo">
-                                <img src="#" alt="">
+            <!-- ======================================================================================FORMS -->
+            <div class="col-lg-7 mx-0 px-0">
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50"
+                        class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        style="width: 0%; background-color: #154763;"></div>
+                </div>
+                <div id="qbox-container">
+                    <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
+                        <div id="steps-container">
+                            <!-- ========================================================STEP 1: SELECT PROFILE -->
+                            <div class="step">
+                                <h4>Select a Medical Profile that you want to have a healthcare appointment</h4>
+                                <div class="form-check ps-0 q-box scroll">
+                                    <div class="q-box__question q-option">
+                                        <input class="form-check-input question__input" id="q_1_yes" name="q_1"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_1_yes">
+                                            <div class="container-info" id="profile-name">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-circle-user"></i></span>
+                                                    <span>name</span>
+                                                </p>
+                                                <span class="card-text" style="font-weight: 900; font-size: 130%;">Trần Gia Thịnh</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-cake-candles"></i></span>
+                                                    <span>birthday</span>
+                                                </p>
+                                                <span class="card-text">15/05/2003</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-mobile"></i></span>
+                                                    <span>phone</span>
+                                                </p>
+                                                <span class="card-text">0987654321</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-envelope"></i></span>
+                                                    <span>gmail</span>
+                                                </p>
+                                                <span class="card-text">thomasshelby@gmail.com</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question q-option">
+                                        <input checked class="form-check-input question__input" id="q_1_no" name="q_1"
+                                            type="radio" value="No">
+                                        <label class="form-check-label question__label" for="q_1_no">
+                                            <div class="container-info" id="profile-name">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-circle-user"></i></span>
+                                                    <span>name</span>
+                                                </p>
+                                                <span class="card-text" style="font-weight: 900; font-size: 130%;">Lạc Thiệu Quân</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-cake-candles"></i></span>
+                                                    <span>birthday</span>
+                                                </p>
+                                                <span class="card-text">18/05/2003</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-mobile"></i></span>
+                                                    <span>phone</span>
+                                                </p>
+                                                <span class="card-text">0987654321</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-envelope"></i></span>
+                                                    <span>gmail</span>
+                                                </p>
+                                                <span class="card-text">bokhongluoi@gmail.com</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question q-option">
+                                        <input class="form-check-input question__input" id="q_1_a" name="q_1"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_1_a">
+                                            <div class="container-info" id="profile-name">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-circle-user"></i></span>
+                                                    <span>name</span>
+                                                </p>
+                                                <span class="card-text" style="font-weight: 900; font-size: 130%;">Nguyễn Công Khanh</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-cake-candles"></i></span>
+                                                    <span>birthday</span>
+                                                </p>
+                                                <span class="card-text">01/01/1999</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-mobile"></i></span>
+                                                    <span>phone</span>
+                                                </p>
+                                                <span class="card-text">0987654321</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa fa-solid fa-envelope"></i></span>
+                                                    <span>gmail</span>
+                                                </p>
+                                                <span class="card-text">cokanguyen@gmail.com</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="hosInfo">
-                                <p>Name</p>
-                                <p>Address</p>
+                            <!-- ========================================================STEP 2: SELECT HOSPITAL -->
+                            <div class="step">
+                                <h4>Select a Hospital you need a Healthcare Service
+                                </h4>
+                                <div class="form-check ps-0 q-box scroll">
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_2_yes" name="q_2"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_2_yes">
+                                            <div class="container-hospital">
+                                                <span>
+                                                    <img src="../public/images/logoNTP.png" alt=""
+                                                    style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
+                                                </span>
+                                                <div style="margin-left: 10px;">
+                                                    <p style="margin-bottom: 0;">Nguyen Tri Phuong hospital</p>
+                                                    <p style="margin-bottom: 0; color: #716969;">486 Nguyen Trai, P8, Q5, TPHCM</p>
+                                                </div>    
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input checked class="form-check-input question__input" id="q_2_no" name="q_2"
+                                            type="radio" value="No">
+                                        <label class="form-check-label question__label" for="q_2_no">
+                                            <div class="container-hospital">
+                                                <span>
+                                                    <img src="../public/images/logoNTP.png" alt=""
+                                                    style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
+                                                </span>
+                                                <div style="margin-left: 10px;">
+                                                    <p style="margin-bottom: 0;">Nguyen Tri Phuong hospital</p>
+                                                    <p style="margin-bottom: 0; color: #716969;">486 Nguyen Trai, P8, Q5, TPHCM</p>
+                                                </div>    
+                                            </div>    
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input checked class="form-check-input question__input" id="q_2_a" name="q_2"
+                                            type="radio" value="No">
+                                        <label class="form-check-label question__label" for="q_2_a">
+                                            <div class="container-hospital">
+                                                <span>
+                                                    <img src="../public/images/logoNTP.png" alt=""
+                                                    style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
+                                                </span>
+                                                <div style="margin-left: 10px;">
+                                                    <p style="margin-bottom: 0;">Nguyen Tri Phuong hospital</p>
+                                                    <p style="margin-bottom: 0; color: #716969;">486 Nguyen Trai, P8, Q5, TPHCM</p>
+                                                </div>    
+                                            </div>    
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input checked class="form-check-input question__input" id="q_2_b" name="q_2"
+                                            type="radio" value="No">
+                                        <label class="form-check-label question__label" for="q_2_b">
+                                            <div class="container-hospital">
+                                                <span>
+                                                    <img src="../public/images/logoNTP.png" alt=""
+                                                    style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
+                                                </span>
+                                                <div style="margin-left: 10px;">
+                                                    <p style="margin-bottom: 0;">Nguyen Tri Phuong hospital</p>
+                                                    <p style="margin-bottom: 0; color: #716969;">486 Nguyen Trai, P8, Q5, TPHCM</p>
+                                                </div>    
+                                            </div>    
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input checked class="form-check-input question__input" id="q_2_c" name="q_2"
+                                            type="radio" value="No">
+                                        <label class="form-check-label question__label" for="q_2_c">
+                                            <div class="container-hospital">
+                                                <span>
+                                                    <img src="../public/images/logoNTP.png" alt=""
+                                                    style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
+                                                </span>
+                                                <div style="margin-left: 10px;">
+                                                    <p style="margin-bottom: 0;">Nguyen Tri Phuong hospital</p>
+                                                    <p style="margin-bottom: 0; color: #716969;">486 Nguyen Trai, P8, Q5, TPHCM</p>
+                                                </div>    
+                                            </div>    
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input checked class="form-check-input question__input" id="q_2_d" name="q_2"
+                                            type="radio" value="No">
+                                        <label class="form-check-label question__label" for="q_2_d">
+                                            <div class="container-hospital">
+                                                <span>
+                                                    <img src="../public/images/logoNTP.png" alt=""
+                                                    style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
+                                                </span>
+                                                <div style="margin-left: 10px;">
+                                                    <p style="margin-bottom: 0;">Nguyen Tri Phuong hospital</p>
+                                                    <p style="margin-bottom: 0; color: #716969;">486 Nguyen Trai, P8, Q5, TPHCM</p>
+                                                </div>    
+                                            </div>    
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ========================================================STEP 3: SELECT SPECIALIST -->
+                            <div class="step">
+                                <h4>Select A Specialist (which relate to your health issue)</h4>
+                                <div class="form-check ps-0 q-box scroll">
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_a" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_a">CARDIOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_b" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_b">OPHTHALMOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_c" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_c">DEMARTOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_d" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_d">NEUROLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_e" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_e">PSYCHOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_f" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_f">INFECTION CONTROL</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_g" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_g">RESPIRATORY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_h" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_h">PEDIATRICS</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_i" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_i">ONCOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_j" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_j">CARDIOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_k" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_k">CARDIOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_l" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_l">CARDIOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_m" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_m">CARDIOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_n" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_n">CARDIOLOGY</label>
+                                    </div>
+                                    <div class="q-box__question">
+                                        <input class="form-check-input question__input" id="q_3_o" name="q_3"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_3_o">CARDIOLOGY</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ========================================================STEP 4: SELECT DOCTOR -->
+                            <div class="step">
+                                <h4>Select A Doctor you want</h4>
+                                <div class="form-check ps-0 q-box scroll">
+                                    <div class="q-box__question q-option">
+                                        <input class="form-check-input question__input" id="q_4_a" name="q_4"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_4_a">
+                                            <div class="container-info" style="width: 406.8px;" id="profile-name">
+                                                <p>
+                                                    <span><i class="fa-solid fa-user-doctor"></i></span>
+                                                    <span>Doctor</span>
+                                                </p>
+                                                <span class="card-text" style="font-weight: 900; font-size: 130%;">Nguyen Cao Luan</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-solid fa-venus-mars"></i></span>
+                                                    <span>Gender</span>
+                                                </p>
+                                                <span class="card-text">FEMALE</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-solid fa-stethoscope"></i></span>
+                                                    <span>Specialist</span>
+                                                </p>
+                                                <span class="card-text">CARDIOLOGY</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-regular fa-calendar"></i></span>
+                                                    <span>Experience</span>
+                                                </p>
+                                                <span class="card-text">50 years</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question q-option">
+                                        <input class="form-check-input question__input" id="q_4_b" name="q_4"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_4_b">
+                                            <div class="container-info" style="width: 406.8px;" id="profile-name">
+                                                <p>
+                                                    <span><i class="fa-solid fa-user-doctor"></i></span>
+                                                    <span>Doctor</span>
+                                                </p>
+                                                <span class="card-text" style="font-weight: 900; font-size: 130%;">Nguyen Vu Tuong An</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-solid fa-venus-mars"></i></span>
+                                                    <span>Gender</span>
+                                                </p>
+                                                <span class="card-text">MALE</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-solid fa-stethoscope"></i></span>
+                                                    <span>Specialist</span>
+                                                </p>
+                                                <span class="card-text">RESPIRATORY</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-regular fa-calendar"></i></span>
+                                                    <span>Experience</span>
+                                                </p>
+                                                <span class="card-text">30 years</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="q-box__question q-option">
+                                        <input class="form-check-input question__input" id="q_4_c" name="q_4"
+                                            type="radio" value="Yes">
+                                        <label class="form-check-label question__label" for="q_4_c">
+                                            <div class="container-info" style="width: 406.8px;" id="profile-name">
+                                                <p>
+                                                    <span><i class="fa-solid fa-user-doctor"></i></span>
+                                                    <span>Doctor</span>
+                                                </p>
+                                                <span class="card-text" style="font-weight: 900; font-size: 130%;">Ly Dang Khoa</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-solid fa-venus-mars"></i></span>
+                                                    <span>Gender</span>
+                                                </p>
+                                                <span class="card-text">MALE</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-solid fa-stethoscope"></i></span>
+                                                    <span>Specialist</span>
+                                                </p>
+                                                <span class="card-text">PSYCHOLOGY</span>
+                                            </div>
+                                            <div class="container-info">
+                                                <p>
+                                                    <span><i class="fa-regular fa-calendar"></i></span>
+                                                    <span>Experience</span>
+                                                </p>
+                                                <span class="card-text">20 years</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        
+                            <!-- ========================================================STEP 5: SELECT DATE -->
+                            <div class="step">
+                                <h4>Select a Date for the Appointment (which is the work shift of your chosen doctor)</h4>
+                                
+                            </div>
+
+                            <!-- ========================================================STEP 6: CONFIRMATION -->
+                            <div class="step">
+                                <div class="mt-1">
+                                    <div class="closing-text">  
+                                        <h4 style="margin-bottom: 0;">IT'S DONE !!!</h4>
+                                        <p style="margin-bottom: 0;">Please check again your appointment information before click SUBMIT button to finish
+                                           making an appointment</p>
+                                        <p style="margin-bottom: 0;">Thank you for using our service</p>
+                                    </div>
+                                </div>
+                                <div class="q-box__question q-option">
+                                    <label class="form-check-label question__label confirm">
+                                        <div class="container-info" style="width: 406.8px;">
+                                            <p>
+                                                <span><i class="fa fa-solid fa-circle-user"></i></span>
+                                                <span>Patient Name</span>
+                                            </p>
+                                            <span class="card-text">Lac Thieu Quan</span>
+                                        </div>
+                                        <div class="container-info">
+                                            <p>
+                                                <span><i class="fa-solid fa-hospital"></i></span>
+                                                <span>Hospital</span>
+                                            </p>
+                                            <span class="card-text">Nguyen Tri Phuong hospital</span>
+                                        </div>
+                                        <div class="container-info">
+                                            <p>
+                                                <span><i class="fa-solid fa-stethoscope"></i></span>
+                                                <span>Specialist</span>
+                                            </p>
+                                            <span class="card-text">ANDROLOGY</span>
+                                        </div>
+                                        <div class="container-info">
+                                            <p>
+                                                <span><i class="fa-solid fa-user-doctor"></i></span>
+                                                <span>Doctor</span>
+                                            </p>
+                                            <span class="card-text">Nguyen Cao Luan</span>
+                                        </div>
+                                        <div class="container-info">
+                                            <p>
+                                                <span><i class="fa-regular fa-calendar"></i></span>
+                                                <span>Date</span>
+                                            </p>
+                                            <span class="card-text">9:00 AM, Monday, 7th August 2023</span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div id="q-box__buttons">
+                            <button id="prev-btn" type="button">Previous</button>
+                            <button id="next-btn" type="button">Next</button>
+                            <button id="submit-btn" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
+            </div>
+            <div id="preloader-wrapper">
+                <div id="preloader"></div>
+                <div class="preloader-section section-left"></div>
+                <div class="preloader-section section-right"></div>
             </div>
         </div>
     </div>
-</section>
-<script>
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $(".dropdown-menu li").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-    </script>
+
+    <script src="../public/js/makingAppoint.js"></script>
 <%- include("partials/footer"); %>
