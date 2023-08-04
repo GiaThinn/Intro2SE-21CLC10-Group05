@@ -829,7 +829,7 @@ h6 {
     margin-right: auto;
     margin-bottom: 0px;
     margin-left: auto;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .landing_page .text-blk {
@@ -841,16 +841,20 @@ h6 {
 }
 
 .landing_page .responsive-cell-block {
-    min-height: 75px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
 }
 
 .landing_page .responsive-container-block.container {
-    max-width: 1320px;
+    width: 100%;
     margin-top: 60px;
     margin-right: auto;
     margin-bottom: 60px;
     margin-left: auto;
+    box-sizing: border-box;
     position: relative;
+    resize: vertical;
 }
 
 .landing_page .form-box {
@@ -860,7 +864,12 @@ h6 {
     padding-right: 33px;
     padding-bottom: 35px;
     padding-left: 33px;
-    max-width: 506px;
+    max-width: 600px;
+}
+
+.landing_page .content-box{
+    margin-left: 100px;
+    max-width: 700px;
 }
 
 .landing_page .text-blk.contactus-head {
@@ -979,11 +988,13 @@ h6 {
 }
 
 .landing_page .responsive-cell-block.wk-ipadp-6.wk-tab-12.wk-mobile-12.wk-desk-6.right-one {
+    width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: right;
 }
 
 .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
+    width: 50%;
     display: flex;
     justify-content: flex-start;
     align-items: left;
@@ -991,13 +1002,13 @@ h6 {
 }
 
 .landing_page .text-blk.section-subhead {
-    margin-top: 0px;
+    margin-top: 10px;
     margin-right: 0px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     margin-left: 0px;
-    max-width: 420px;
+    max-width: 500px;
     font-size: 18px;
-    color: #b6b6b6;
+    color: black;
 }
 
 .landing_page .text-blk.section-head {
@@ -1008,7 +1019,36 @@ h6 {
     margin-right: 0px;
     margin-bottom: 15px;
     margin-left: 0px;
-    max-width: 450px;
+    max-width: 500px;
+}
+
+.landing_page .workik-contact-box {
+    margin-bottom: 30px;
+}
+.landing_page .phone.text-box {
+    display: flex;
+    align-items: flex-end;
+}
+
+.landing_page .mail.text-box {
+    display: flex;
+    align-items: flex-end;
+}
+
+.landing_page .address.text-box {
+    display: flex;
+    align-items: flex-end;
+}
+
+.landing_page .contact-svg {
+    color: white;
+    width: 50px;
+    height: 50px;
+    margin: 10px 30px 10px 30px;
+}
+
+.landing_page .contact-text {
+    font-size: 20px;
 }
 
 .landing_page .icons-container {
@@ -1023,7 +1063,7 @@ h6 {
 }
 
 .landing_page .responsive-container-block.big-container {
-    background-color: black;
+    background-color: gray;
     padding-top: 0px;
     padding-right: 50px;
     padding-bottom: 0px;
@@ -1046,7 +1086,7 @@ h6 {
 
 @media (max-width: 1024px) {
     .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
-        justify-content: center;
+        justify-content: left;
         margin-top: 0px;
         margin-right: 0px;
         margin-bottom: 30px;
@@ -1060,8 +1100,8 @@ h6 {
         padding-left: 0px;
     }
 
-    .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
-        margin: 0 0 60px 0;
+    .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.right-one {
+        margin: 0 0 0 0;
     }
 }
 
