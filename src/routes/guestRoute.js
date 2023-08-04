@@ -3,6 +3,7 @@ const router = express.Router();
 
 const newsController = require("../controllers/newsController");
 const hospitalController = require("../controllers/hospitalController");
+const authController = require("../controllers/authController");
 
 // Partnership
 router.get('/partnership', (req, res) => {
@@ -24,10 +25,21 @@ router.get('/hospital-list/query', hospitalController.getHospitalListbyQuery);
 router.get('/login', (req, res) => {
     res.render('Login');
 });
+router.post('/login', authController.roleAuth);
 
 // Sign up
 router.get('/signup', (req, res) => {
     res.render('signUp');
+});
+
+// Forgot password
+router.get('/forgot-password', (req, res) => {
+    res.render('forgotPass');
+});
+
+// Reset password
+router.get('/reset-password', (req, res) => {
+    res.render('resetPass');
 });
 
 //News
