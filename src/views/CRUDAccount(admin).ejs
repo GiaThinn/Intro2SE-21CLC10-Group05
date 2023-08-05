@@ -1,0 +1,53 @@
+<%- include("partials/ad_sidebar.ejs"); %>
+
+<div class = "fluid-container" style="padding-left: 400px;padding-right: 300px;padding-top: 10px">
+  <div class="form-outline" style="padding-bottom: 20px">
+    <input type="search" id="form1" class="form-control" placeholder="Search for username" aria-label="Search" />
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-outline-success" style="float: right;">Create new account</button>
+  </div>
+
+  <div class = "table-reponsive" style="padding-top: 60px;">
+    <table class="table text-center table-hover">
+      <thead>
+        <tr class="table">
+          <th style="background-color: #155263; color: white">Username</th>
+          <th style="background-color: #155263; color: white">Password</th>
+          <th style="background-color: #155263; color: white">Email</th>
+          <th style="background-color: #155263; color: white">Role</th>
+          <th style="background-color: #155263; color: white">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>username1</td>
+            <td>password1</td>
+            <td>email1</td>
+            <td>role1</td>
+            <td>
+              <a href="" class="text-success">
+                <i class="fa-solid fa-pencil"></i>
+              </a>
+              <a href="" class="text-danger">
+                <i class="fa-solid fa-trash"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>username2</td>
+            <td>password2</td>
+            <td>email2</td>
+            <td>role2</td>
+            <td>
+              <a href="" class="text-success">
+                <i class="fa-solid fa-pencil"></i>
+              </a>
+              <a href="" class="text-danger">
+                <i class="fa-solid fa-trash"></i>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
