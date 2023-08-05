@@ -7,7 +7,10 @@ body {
     padding-left: 240px;
   }
 }
-
+.img-fluid-admin{
+  max-width: 150%;
+  max-height: 150%;
+}
 /* Sidebar */
 .sidebar {
   position: fixed;
@@ -45,6 +48,7 @@ body {
 
 .navbar-brand {
   padding-left: 0.5rem;
+  height: 50;
 }
 
 .fas {
@@ -63,4 +67,7 @@ ul {
 }
 .avatar-img{
   width: 5rem;
+}
+.card-leaderboard{
+  max-width: 200%;
 }
