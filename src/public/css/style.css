@@ -1200,6 +1200,7 @@ input[type="radio"]:hover {
 }
 
 .new-page new {
+    margin-top: 50px;
     background-color: white;
     padding: 1rem;
 }
@@ -1353,7 +1354,7 @@ input[type="radio"]:hover {
     border-image-width: initial;
     border-image-outset: initial;
     border-image-repeat: initial;
-    background-color: #212223;
+    background-color: gainsboro;
     padding: 1px 12.5px 1px 22.5px;
     }
 
@@ -1369,7 +1370,7 @@ input[type="radio"]:hover {
     padding-right: 22px;
     padding-bottom: 22px;
     padding-left: 22px;
-    background-color: #212223;
+    background-color: gainsboro;
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -1427,12 +1428,14 @@ input[type="radio"]:hover {
 }
 
 .landing_page .responsive-cell-block.wk-ipadp-6.wk-tab-12.wk-mobile-12.wk-desk-6.right-one {
+    margin-top: 20px;
     width: 50%;
     display: flex;
     justify-content: right;
 }
 
 .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
+    margin-top: 40px;
     width: 50%;
     display: flex;
     justify-content: flex-start;
@@ -1522,11 +1525,16 @@ input[type="radio"]:hover {
     object-fit: cover;
 }
 
+.landing_page .form-label.align-items-start.d-flex {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
 
 @media (max-width: 1024px) {
     .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
         justify-content: left;
-        margin-top: 0px;
+        margin-top: 40px;
         margin-right: 0px;
         margin-bottom: 30px;
         margin-left: 0px;
@@ -1540,7 +1548,7 @@ input[type="radio"]:hover {
     }
 
     .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.right-one {
-        margin: 0 0 0 0;
+        margin: 0 20 0 0;
     }
 }
 
