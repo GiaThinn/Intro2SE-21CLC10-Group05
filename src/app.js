@@ -40,7 +40,7 @@ app.use(session({
   saveUninitialized: false,
   store: store,
   cookie: {
-    secure: false,
+    secure: true,
     maxAge: 1000 * 60 * 60
   }
 }))
@@ -51,13 +51,18 @@ db.once("open", () => {
   console.log("Connected successfully");
 });
 
-// Session timeout
-// app.use(sessionHandler.lastActive);
 
 // Routes
 app.use("/", guestRoute);
+
+
 app.use("/", patientRoute);
 // app.use("/admin", auth.adminAuth, adminRoute);
+
+// Session timeout
+// app.use(sessionHandler.checkSessionTimeout);
+// app.use(sessionHandler.lastActive);
+
 app.use("/admin", adminRoute);
 app.use("/hospital", hospitalRoute);
 

@@ -27,6 +27,7 @@ exports.isLogged = (req, res, next) => {
     }
     else {
         console.log('Not logged in');
-        res.redirect('/login');
+        // res.redirect('/login');
+        res.render('Login');
     }
 }

@@ -28,7 +28,7 @@ $(document).ready(function () {
                     const hospitalItem = $(`
                         <div class="hospital-item d-flex">
                             <div class="col-md-4 hospital-img">
-                                <img src="${item.image.url}" alt="Image ${idx + 1}" class="img-fluid">
+                                <img src="${item.avatar}" alt="Image ${idx + 1}" class="img-fluid">
                             </div>
                             <div class="col-md-8 hospital-caption text-start">
                                 <div class="hospital-title">

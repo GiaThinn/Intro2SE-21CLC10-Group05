@@ -14,7 +14,7 @@ const HospitalSchema = new mongoose.Schema({
         specName: String,
         specDescription: String
     },
-    image: String
+    avatar: String
 });
 
 const Hospital = mongoose.model("hospitals", HospitalSchema);

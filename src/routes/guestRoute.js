@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+const sessionController = require('../controllers/sessionController')
 const newsController = require("../controllers/newsController");
 const hospitalController = require("../controllers/hospitalController");
 const authController = require("../controllers/authController");
+const accController = require("../controllers/accountController");
+const patController = require("../controllers/patientController");
 
 
 // Partnership
@@ -57,4 +60,9 @@ router.get('/single-news', (req, res) => {
 router.get('/contract-us', (req, res) => {
     res.render('AddContract');
 });
+
+// Get id by username
+router.post('/getID', patController.getIDbyUsername);
+router.get('/getUsn', sessionController.getbyID); // for getting username from sessionID (req.headers.authorization)
+
 module.exports = router;
