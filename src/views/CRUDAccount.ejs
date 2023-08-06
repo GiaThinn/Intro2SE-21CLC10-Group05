@@ -6,7 +6,9 @@
   </div>
 
   <div>
+    <a href="CRUDAccount/add">
     <button type="button" class="btn btn-outline-success" style="float: right;">Create new account</button>
+    </a>
   </div>
 
   <div class = "table-reponsive" style="padding-top: 60px;">
@@ -20,13 +22,18 @@
           <th style="background-color: #155263; color: white">Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style="text-align: left;">
+        <% account.forEach((acc)=>{%>
           <tr>
-            <td>username1</td>
-            <td>password1</td>
-            <td>email1</td>
-            <td>role1</td>
-            <td>
+            <td><%= acc.username%></td>
+            <td><%= acc.password%></td>
+            <td><%= acc.email%></td>
+            <td style="text-align: center;">
+              <% if (acc.role == '0') {%> Admin
+              <%} else if (acc.role == '1') {%> Patient
+              <%} else { %> Hospital <%}%>
+            </td>
+            <td style="text-align: center;">
               <a href="" class="text-success">
                 <i class="fa-solid fa-pencil"></i>
               </a>
@@ -34,19 +41,7 @@
                 <i class="fa-solid fa-trash"></i>
             </td>
           </tr>
-          <tr>
-            <td>username2</td>
-            <td>password2</td>
-            <td>email2</td>
-            <td>role2</td>
-            <td>
-              <a href="" class="text-success">
-                <i class="fa-solid fa-pencil"></i>
-              </a>
-              <a href="" class="text-danger">
-                <i class="fa-solid fa-trash"></i>
-            </td>
-          </tr>
+        <% }) %>
       </tbody>
     </table>
   </div>
