@@ -6,11 +6,14 @@ exports.listAccount = async(req, res) =>{
 }
 
 // New acocunt
-exports.addAccount = async(req, res) =>{
-    res.render('addAccount')
-}
-
-exports.postAccount = async(req, res) =>{
-    console.log(req.body)
-    res.render('addAccount')
+exports.createAccount = async(req, res) =>{
+    // const newAcc = new Account({
+    //     username: req.body.username,
+    //     password: req.body.password,
+    //     email: req.body.email,
+    //     role: req.body.role
+    // })
+    // newAcc.save()
+    console.log(req.body.username)
+    res.send('done')
 }
