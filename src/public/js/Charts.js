@@ -3,7 +3,7 @@ var ctx = document.getElementById("piechart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: ["Positive", "Negative", "Corrective"],
     datasets: [{
       data: [55, 30, 15],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
@@ -61,11 +61,11 @@ var myBarChart = new Chart(ctx, {
   data: {
     labels: ["January", "February", "March", "April", "May", "June"],
     datasets: [{
-      label: "Revenue",
+      label: "Accounts",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [421, 531, 625, 784, 982, 1498],
     }],
   },
   options: {
@@ -167,9 +167,9 @@ var ctx = document.getElementById("areachart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [{
-      label: "Earnings",
+      label: "Appointments",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -181,7 +181,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: [421, 531, 625, 784, 982, 1498],
     }],
   },
   options: {
