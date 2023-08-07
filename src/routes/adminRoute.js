@@ -14,4 +14,8 @@ router.get('/account/add', (req, res) =>{
 
 router.post('/account/add', accountController.createAccount);
 
+router.get('/account/update/:id', accountController.updateAccount)
+
+router.put('/account/update/:id', accountController.updateAccountPost)
+
 module.exports = router;

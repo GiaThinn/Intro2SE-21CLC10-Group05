@@ -1,0 +1,12 @@
+<form action="<%= account._id%>?_method=PUT" method="post" id="add-form" >
+    <h1>Updating <%= account.username %></h1>
+    <label for="Username">Username</label>
+    <input type="text" name="username" value="<%= account.username %>" required>
+    <label for="Password">Password</label>
+    <input type="text" name ="password" value="<%= account.password %>" required>
+    <label for="Email">Email</label>
+    <input type="email" name="email" value="<%= account.email %>" required>
+    <label for="Role">Role</label>
+    <input type="number" name='role' value="<%= account.role %>" required>
+    <button type="submit"> send</button>
+</form>

@@ -15,4 +15,25 @@ exports.createAccount = async(req, res) =>{
     })
     newAcc.save()
     res.redirect('/admin/account')
+    // res.reload('/admin/account')
+}
+
+exports.updateAccount = async(req, res) => {
+    try{
+        const account = await Account.findOne({_id: req.params.id})
+        res.render('updateAccount', {account})
+    } catch (error){console.log(error)}
+}
+
+exports.updateAccountPost = async(req, res) => {
+    try{
+        await Account.findByIdAndUpdate(req.params.id,{
+            username: req.body.username,
+            password: req.body.password,
+            email: req.body.email,
+            role: req.body.role
+        })
+    } catch{}
+
+    res.redirect('/admin/account')
 }
