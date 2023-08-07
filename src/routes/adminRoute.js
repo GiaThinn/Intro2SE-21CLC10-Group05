@@ -18,4 +18,6 @@ router.get('/account/update/:id', accountController.updateAccount)
 
 router.put('/account/update/:id', accountController.updateAccountPost)
 
+router.delete('/account/delete/:id',accountController.deleteAccount)
+
 module.exports = router;

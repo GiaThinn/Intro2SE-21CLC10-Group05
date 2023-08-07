@@ -5,7 +5,6 @@ exports.listAccount = async(req, res) =>{
     res.render('account', {account})
 }
 
-// New acocunt
 exports.createAccount = async(req, res) =>{
     const newAcc = new Account({
         username: req.body.username,
@@ -15,7 +14,6 @@ exports.createAccount = async(req, res) =>{
     })
     newAcc.save()
     res.redirect('/admin/account')
-    // res.reload('/admin/account')
 }
 
 exports.updateAccount = async(req, res) => {
@@ -34,6 +32,11 @@ exports.updateAccountPost = async(req, res) => {
             role: req.body.role
         })
     } catch{}
+}
 
-    res.redirect('/admin/account')
+exports.deleteAccount = async(req, res) => {
+    try{
+        await Account.deleteOne({_id: req.params.id});
+        res.redirect('/admin/account')
+    } catch(error){}
 }

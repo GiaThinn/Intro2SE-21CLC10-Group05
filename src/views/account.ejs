@@ -37,8 +37,11 @@
               <a href="account/update/<%= acc._id%>" class="text-success">
                 <i class="fa-solid fa-pencil"></i>
               </a>
-              <a href="" class="text-danger">
-                <i class="fa-solid fa-trash"></i>
+              <form action="account/delete/<%= acc._id %>?_method=DELETE" method="post">
+                <button type="submit">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </form>
             </td>
           </tr>
         <% }) %>
