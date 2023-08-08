@@ -1477,7 +1477,7 @@ input[type="radio"]:hover {
     align-items: flex-end;
 }
 
-.landing_page .address.text-box {
+.landing_page .address.text-box{
     display: flex;
     align-items: flex-end;
 }
