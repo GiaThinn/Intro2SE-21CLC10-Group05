@@ -11,7 +11,6 @@ router.get("/account", accountController.listAccount);
 router.get('/account/add', (req, res) =>{
     res.render('addAccount')
 })
-
 router.post('/account/add', accountController.createAccount);
 
 router.get('/account/update/:id', accountController.updateAccount)

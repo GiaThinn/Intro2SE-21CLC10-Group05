@@ -1,51 +1,58 @@
 <%- include("partials/ad_sidebar.ejs"); %>
 
-<div class = "fluid-container" style="padding-left: 400px;padding-right: 300px;padding-top: 10px">
-  <div class="form-outline" style="padding-bottom: 20px">
-    <input type="search" id="form1" class="form-control" placeholder="Search for username" aria-label="Search" />
-  </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
-  <div>
-    <a href="account/add">
-    <button type="button" class="btn btn-outline-success" style="float: right;">Create new account</button>
-    </a>
-  </div>
+<script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script defer src="../public/js/table.js"></script>
+<div class="row">
+  <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2">
+    <!-- Sidebar -->
 
-  <div class = "table-reponsive" style="padding-top: 60px;">
-    <table class="table text-center table-hover">
+  </div>
+  <div class="col-sm-9 col-md-6 col-lg-8 col-xl-10">
+    <table id="example" class="table table-striped" style="width:100%">
       <thead>
-        <tr class="table">
-          <th style="background-color: #155263; color: white">Username</th>
-          <th style="background-color: #155263; color: white">Password</th>
-          <th style="background-color: #155263; color: white">Email</th>
-          <th style="background-color: #155263; color: white">Role</th>
-          <th style="background-color: #155263; color: white">Action</th>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
         </tr>
       </thead>
-      <tbody style="text-align: left;">
+      <tbody>
         <% account.forEach((acc)=>{%>
-          <tr>
-            <td><%= acc.username%></td>
-            <td><%= acc.password%></td>
-            <td><%= acc.email%></td>
-            <td style="text-align: center;">
-              <% if (acc.role == '0') {%> Admin
-              <%} else if (acc.role == '1') {%> Patient
-              <%} else { %> Hospital <%}%>
-            </td>
-            <td style="text-align: center;">
-              <a href="account/update/<%= acc._id%>" class="text-success">
-                <i class="fa-solid fa-pencil"></i>
-              </a>
-              <form action="account/delete/<%= acc._id %>?_method=DELETE" method="post">
-                <button type="submit">
+            <tr>
+              <td><%= acc.username%></td>
+              <td><%= acc.password%></td>
+              <td><%= acc.email%></td>
+              <td>
+                <% if (acc.role == '0') {%> Admin
+                <%} else if (acc.role == '1') {%> Patient
+                <%} else { %> Hospital <%}%>
+              </td>
+              <td style="text-align: center;">
+                <a href="" class="text-success">
+                  <i class="fa-solid fa-pencil"></i>
+                </a>
+                <a href="" class="text-danger">
                   <i class="fa-solid fa-trash"></i>
-                </button>
-              </form>
-            </td>
-          </tr>
-        <% }) %>
+              </td>
+            </tr>
+          <% }) %>
       </tbody>
+      <tfoot>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </div>
