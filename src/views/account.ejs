@@ -12,7 +12,7 @@
   </div>
 
   <div class = "table-reponsive" style="padding-top: 60px;">
-    <table class="table text-center table-hover">
+    <table class="table text-left table-hover">
       <thead>
         <tr class="table">
           <th style="background-color: #155263; color: white">Username</th>
@@ -23,23 +23,23 @@
         </tr>
       </thead>
       <tbody style="text-align: left;">
-        <% account.forEach((acc)=>{%>
+        <% account.forEach((acc)=>{ %>
           <tr>
             <td><%= acc.username%></td>
             <td><%= acc.password%></td>
             <td><%= acc.email%></td>
-            <td style="text-align: center;">
+            <td style="text-align: left;">
               <% if (acc.role == '0') {%> Admin
               <%} else if (acc.role == '1') {%> Patient
               <%} else { %> Hospital <%}%>
             </td>
-            <td style="text-align: center;">
+            <td style="text-align: left;">
               <a href="account/update/<%= acc._id%>" class="text-success">
                 <i class="fa-solid fa-pencil"></i>
               </a>
               <form action="account/delete/<%= acc._id %>?_method=DELETE" method="post">
-                <button type="submit">
-                  <i class="fa-solid fa-trash"></i>
+                <button type="submit" class="btn">
+                  <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
                 </button>
               </form>
             </td>
