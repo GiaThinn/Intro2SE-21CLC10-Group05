@@ -55,13 +55,12 @@ exports.listAccount = async (req, res) => {
 }
 
 exports.createAccount = async(req, res) =>{
-    const newAcc = new Account({
+    await Account.create({
         username: req.body.username,
         password: req.body.password,
         email: req.body.email,
         role: req.body.role
-    })
-    newAcc.save()
+    });
     res.redirect('/admin/account')
 }
 
@@ -80,6 +79,7 @@ exports.updateAccountPost = async(req, res) => {
             email: req.body.email,
             role: req.body.role
         })
+        res.redirect('/admin/account')
     } catch{}
 }
 
