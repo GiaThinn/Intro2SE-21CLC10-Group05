@@ -3,7 +3,7 @@ const router = express.Router();
 const accountController = require('../controllers/accountController')
 
 router.get('/', (req, res) => {
-    res.render('Dashboard');
+    res.render('admin_dashboard');
 });
 
 router.get("/account", accountController.listAccount);
