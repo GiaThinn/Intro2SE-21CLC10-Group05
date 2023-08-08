@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const accountController = require('../controllers/accountController')
 
-router.get('/dashboard', (req, res) => {
+router.get('/', (req, res) => {
     res.render('Dashboard');
 });
 
