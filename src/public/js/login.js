@@ -2,7 +2,6 @@ $(document).ready(function () {
     const loginBtn = $('#loginBtn');
     
     loginBtn.on('click', function (e) {
-        console.log("Login button clicked");
         e.preventDefault();
 
         const username = $('#username').val();
