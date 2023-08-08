@@ -6,7 +6,7 @@
   </div>
 
   <div>
-    <a href="addAccount">
+    <a href="account/add">
     <button type="button" class="btn btn-outline-success" style="float: right;">Create new account</button>
     </a>
   </div>
@@ -34,11 +34,14 @@
               <%} else { %> Hospital <%}%>
             </td>
             <td style="text-align: center;">
-              <a href="" class="text-success">
+              <a href="account/update/<%= acc._id%>" class="text-success">
                 <i class="fa-solid fa-pencil"></i>
               </a>
-              <a href="" class="text-danger">
-                <i class="fa-solid fa-trash"></i>
+              <form action="account/delete/<%= acc._id %>?_method=DELETE" method="post">
+                <button type="submit">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </form>
             </td>
           </tr>
         <% }) %>

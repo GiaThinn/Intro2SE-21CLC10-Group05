@@ -11,6 +11,7 @@ const patientRoute = require("./routes/patientRoute");
 const sessionHandler = require("./middleware/session");
 const auth = require("./middleware/authentication");
 const bodyParser = require("body-parser");
+const methodOverride = require('method-override')
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/public', express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 
 // Connect to MongoDB
 const mongoURI = `mongodb+srv://thieuquanlac:iMyQSZ5ZQLsYnJMb@cluster0.eezcbqy.mongodb.net/HealthUs?retryWrites=true&w=majority`
