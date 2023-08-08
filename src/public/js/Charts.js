@@ -56,6 +56,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Bar Chart Example
 var ctx = document.getElementById("barchart");
+ctx.height = 200
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {

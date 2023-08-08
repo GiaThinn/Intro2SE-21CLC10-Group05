@@ -27,8 +27,7 @@ app.use(methodOverride('_method'))
 // Connect to MongoDB
 const mongoURI = `mongodb+srv://thieuquanlac:iMyQSZ5ZQLsYnJMb@cluster0.eezcbqy.mongodb.net/HealthUs?retryWrites=true&w=majority`
 mongoose.connect(
-  mongoURI,
-  {
+  mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   }
