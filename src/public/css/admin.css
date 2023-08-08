@@ -71,3 +71,6 @@ ul {
 .card-leaderboard{
   max-width: 200%;
 }
+div.dataTables_wrapper div.dataTables_filter {
+  text-align: center;
+}
