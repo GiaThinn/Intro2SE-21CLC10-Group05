@@ -22,7 +22,7 @@ router.delete('/account/delete/:id',accountController.deleteAccount)
 router.get("/hospital", hospitalController.listHospital);
 
 router.get('/hospital/add', (req, res) =>{
-    res.render('addhospital')
+    res.render('addHospital')
 })
 router.post('/hospital/add', hospitalController.createHospital);
 
