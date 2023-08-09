@@ -6,7 +6,11 @@ const MedicalProfileSchema = new mongoose.Schema({
     name: String,
     phone: String,
     birth: Date,
-    gender: Int
+    gender: Number,
+    career: String,
+    identity: String,
+    email: String,
+    address: String,
 });
 
 const MedicalProfile = mongoose.model("medical_profiles", MedicalProfileSchema);

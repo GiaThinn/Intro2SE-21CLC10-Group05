@@ -56,3 +56,22 @@ exports.deleteDoctor = async(req, res) => {
         res.redirect('/admin/doctor')
     } catch(error){}
 }
+
+exports.getDocbySpec = async (req, res) => {
+    hosID = req.body.hospitalID;
+    spec = req.body.pickedID;
+
+    const data = await Doctor.find({hospitalID: hosID, specialist: spec});
+    res.json({
+        items: data
+    });
+}
+
+exports.getScheofDoc = async (req, res) => {
+    docID = req.body.pickedID;
+
+    const data = await Doctor.find({doctorID: docID});
+
+    res.json({
+        items: data[0].schedule
+    });

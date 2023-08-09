@@ -1,17 +1,18 @@
 const MedicalProfiles = require('../models/medical_profiles');
 
-exports.getByPatID = async (req, res) => {
-    const id = req.session.user.id;
-    
+exports.getMedProByPatID = async (req, res) => {
+    const patID = req.body.user_id;
+
     await MedicalProfiles
-    .findAll({ where: { patientID: id } })
-    .then(data => {
-        console.log('data:', data);
-        res.json(data);
+    .find({patientID: patID})
+    .then(result => {
+        res.json({
+            profiles: result
+        });
     })
     .catch(err => {
-        res.status(500).json({
-            message: "Error retrieving MedicalProfiles with id=" + id
+        res.status(404).json({
+            message: "Can not found any profiles of this account."
         });
     });
 }
