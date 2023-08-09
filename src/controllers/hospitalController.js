@@ -10,6 +10,24 @@ exports.getHospitalList = async (req, res) => {
     return res.render('hospitalList', { items: result, totalPages: totalPages });
 }
 
+exports.getAllHospital = async (req, res) => {
+    const hospitals = await Hospital.find();
+    res.json({
+        items: hospitals
+    });
+}
+
+exports.getSpecbyHosID = async (req, res) => {
+    hosID = req.body.pickedID;
+    const hospital = await Hospital.find({hospitalID: hosID});
+    // console.log(hospital);
+    const specialists = hospital[0].specialists;
+    // console.log(specialists);
+    res.json({
+        items: specialists
+    });
+}
+
 
 exports.getHospitalListbyQuery = async (req, res) => {
     const page = req.query.page || 1; 

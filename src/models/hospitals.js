@@ -10,7 +10,7 @@ const HospitalSchema = new mongoose.Schema({
     email: String,
     website: String,
     description: String,
-    specialist: {
+    specialists: {
         specName: String,
         specDescription: String
     },
