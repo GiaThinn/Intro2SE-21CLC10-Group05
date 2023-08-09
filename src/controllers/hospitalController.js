@@ -44,3 +44,44 @@ exports.getHospitalListbyQuery = async (req, res) => {
     }
     
 }
+exports.listHospital = async (req, res) => {
+    const Hospital = await Hospital.find()
+    res.render('hospital', {hospital})
+}
+
+exports.createHospital = async(req, res) =>{
+    await Hospital.create({
+        username: req.body.username,
+        hospitalID: req.body.hospitalID,
+        name: req.body.email,
+        location: req.body.role,
+        specialist: req.body.specialist
+    });
+    res.redirect('/admin/hospital')
+}
+
+exports.updateHospital = async(req, res) => {
+    try{
+        const hospital = await Hospital.findOne({_id: req.params.id})
+        res.render('updateHospital', {hospital})
+    } catch (error){console.log(error)}
+}
+
+exports.updateHospitalPost = async(req, res) => {
+    try{
+        await Hospital.findByIdAndUpdate(req.params.id,{
+            username: req.body.username,
+            password: req.body.password,
+            email: req.body.email,
+            role: req.body.role
+        })
+        res.redirect('/admin/hospital')
+    } catch{}
+}
+
+exports.deleteHospital = async(req, res) => {
+    try{
+        await Hospital.deleteOne({_id: req.params.id});
+        res.redirect('/admin/Hospital')
+    } catch(error){}
+}

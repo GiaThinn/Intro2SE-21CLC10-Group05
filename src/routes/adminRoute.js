@@ -19,4 +19,17 @@ router.put('/account/update/:id', accountController.updateAccountPost)
 
 router.delete('/account/delete/:id',accountController.deleteAccount)
 
+router.get("/account", accountController.listAccount);
+
+router.get('/account/add', (req, res) =>{
+    res.render('addAccount')
+})
+router.post('/account/add', accountController.createAccount);
+
+router.get('/account/update/:id', accountController.updateAccount)
+
+router.put('/account/update/:id', accountController.updateAccountPost)
+
+router.delete('/account/delete/:id',accountController.deleteAccount)
+
 module.exports = router;
