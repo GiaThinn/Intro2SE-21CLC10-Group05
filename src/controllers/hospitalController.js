@@ -113,6 +113,6 @@ exports.updateHospitalPost = async(req, res) => {
 exports.deleteHospital = async(req, res) => {
     try{
         await Hospital.deleteOne({_id: req.params.id});
-        res.redirect('/admin/Hospital')
+        res.redirect('/admin/hospital')
     } catch(error){}
 }

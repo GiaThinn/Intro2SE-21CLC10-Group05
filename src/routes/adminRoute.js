@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const accountController = require('../controllers/accountController')
 const hospitalController = require('../controllers/hospitalController')
+const appointmentController = require('../controllers/appointmentController')
 router.get('/', (req, res) => {
     res.render('admin_dashboard');
 });
@@ -31,5 +32,18 @@ router.get('/hospital/update/:id', hospitalController.updateHospital)
 router.put('/hospital/update/:id', hospitalController.updateHospitalPost)
 
 router.delete('/hospital/delete/:id',hospitalController.deleteHospital)
+
+router.get("/appointment", appointmentController.listAppointment);
+
+router.get('/appointment/add', (req, res) =>{
+    res.render('addAppointment')
+})
+router.post('/appointment/add', appointmentController.createAppointment);
+
+router.get('/appointment/update/:id', appointmentController.updateAppointment)
+
+router.put('/appointment/update/:id', appointmentController.updateAppointmentPost)
+
+router.delete('/appointment/delete/:id',appointmentController.deleteAppointment)
 
 module.exports = router;

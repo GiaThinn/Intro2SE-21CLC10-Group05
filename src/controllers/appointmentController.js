@@ -30,3 +30,43 @@ exports.addAppointment = async (req, res) => {
     res.redirect('/');
     
 }
+exports.listAppointment = async (req, res) => {
+    const appointment = await Appointment.find()
+    res.render('admin_appointment', {appointment})
+}
+
+exports.createAppointment = async(req, res) =>{
+    await Appointment.create({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        role: req.body.role
+    });
+    res.redirect('/admin/appointment')
+}
+
+exports.updateAppointment = async(req, res) => {
+    try{
+        const appointment = await Appointment.findOne({_id: req.params.id})
+        res.render('updateAppointment', {appointment})
+    } catch (error){console.log(error)}
+}
+
+exports.updateAppointmentPost = async(req, res) => {
+    try{
+        await Appointment.findByIdAndUpdate(req.params.id,{
+            username: req.body.username,
+            password: req.body.password,
+            email: req.body.email,
+            role: req.body.role
+        })
+        res.redirect('/admin/appointment')
+    } catch{}
+}
+
+exports.deleteAppointment = async(req, res) => {
+    try{
+        await Appointment.deleteOne({_id: req.params.id});
+        res.redirect('/admin/appointment')
+    } catch(error){}
+}
