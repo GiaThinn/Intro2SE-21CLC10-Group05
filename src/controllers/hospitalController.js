@@ -45,7 +45,7 @@ exports.getHospitalListbyQuery = async (req, res) => {
     
 }
 exports.listHospital = async (req, res) => {
-    const Hospital = await Hospital.find()
+    const hospital = await Hospital.find()
     res.render('hospital', {hospital})
 }
 
@@ -53,9 +53,15 @@ exports.createHospital = async(req, res) =>{
     await Hospital.create({
         username: req.body.username,
         hospitalID: req.body.hospitalID,
-        name: req.body.email,
-        location: req.body.role,
-        specialist: req.body.specialist
+        name: req.body.name,
+        location: req.body.location,
+        city: req.body.city,
+        contactNumber: req.body.contactNumber,
+        email: req.body.email,
+        website: req.body.website,
+        description: req.body.description,
+        specialist: req.body.specialist,
+        avatar: req.body.avatar
     });
     res.redirect('/admin/hospital')
 }
@@ -71,9 +77,16 @@ exports.updateHospitalPost = async(req, res) => {
     try{
         await Hospital.findByIdAndUpdate(req.params.id,{
             username: req.body.username,
-            password: req.body.password,
+            hospitalID: req.body.hospitalID,
+            name: req.body.name,
+            location: req.body.location,
+            city: req.body.city,
+            contactNumber: req.body.contactNumber,
             email: req.body.email,
-            role: req.body.role
+            website: req.body.website,
+            description: req.body.description,
+            specialist: req.body.specialist,
+            avatar: req.body.avatar
         })
         res.redirect('/admin/hospital')
     } catch{}
