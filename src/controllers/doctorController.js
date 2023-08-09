@@ -75,3 +75,4 @@ exports.getScheofDoc = async (req, res) => {
     res.json({
         items: data[0].schedule
     });
+}
