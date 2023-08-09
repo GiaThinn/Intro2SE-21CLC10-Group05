@@ -3,6 +3,7 @@ const router = express.Router();
 const accountController = require('../controllers/accountController')
 const hospitalController = require('../controllers/hospitalController')
 const appointmentController = require('../controllers/appointmentController')
+const feedbackController = require('../controllers/feedbackController')
 router.get('/', (req, res) => {
     res.render('admin_dashboard');
 });
@@ -46,4 +47,16 @@ router.put('/appointment/update/:id', appointmentController.updateAppointmentPos
 
 router.delete('/appointment/delete/:id',appointmentController.deleteAppointment)
 
+router.get("/feedback", feedbackController.listFeedback);
+
+router.get('/feedback/add', (req, res) =>{
+    res.render('addFeedback')
+})
+router.post('/feedback/add', feedbackController.createFeedback);
+
+router.get('/feedback/update/:id', feedbackController.updateFeedback)
+
+router.put('/feedback/update/:id', feedbackController.updateFeedbackPost)
+
+router.delete('/feedback/delete/:id',feedbackController.deleteFeedback)
 module.exports = router;
