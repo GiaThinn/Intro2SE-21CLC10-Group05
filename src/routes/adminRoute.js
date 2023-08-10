@@ -4,6 +4,7 @@ const accountController = require('../controllers/accountController')
 const hospitalController = require('../controllers/hospitalController')
 const appointmentController = require('../controllers/appointmentController')
 const feedbackController = require('../controllers/feedbackController')
+const newsController = require('../controllers/newsController')
 router.get('/', (req, res) => {
     res.render('admin_dashboard');
 });
@@ -59,4 +60,21 @@ router.get('/feedback/update/:id', feedbackController.updateFeedback)
 router.put('/feedback/update/:id', feedbackController.updateFeedbackPost)
 
 router.delete('/feedback/delete/:id',feedbackController.deleteFeedback)
+
+
+
+router.get("/news", newsController.listNews);
+
+router.get('/news/add', (req, res) =>{
+    res.render('addNews')
+})
+
+router.post('/news/add', newsController.createNews);
+
+router.get('/news/update/:id', newsController.updateNews)
+
+router.put('/news/update/:id', newsController.updateNewslPost)
+
+router.delete('/news/delete/:id', newsController.deleteNews)
+
 module.exports = router;
