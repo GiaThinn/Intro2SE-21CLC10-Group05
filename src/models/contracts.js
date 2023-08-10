@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
 const ContractSchema = new mongoose.Schema({
-    fullname: {
+    hospitalName: {
         type: String,
         required: true,
         unique: true
     },
-    message: {
+    content: {
         type: String,
         required: true
     },
-    email: {
+    contractEmail: {
         type: String,
         required: true
     },

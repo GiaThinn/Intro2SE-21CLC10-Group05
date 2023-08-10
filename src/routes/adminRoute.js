@@ -5,15 +5,20 @@ const hospitalController = require('../controllers/hospitalController')
 const appointmentController = require('../controllers/appointmentController')
 const feedbackController = require('../controllers/feedbackController')
 const newsController = require('../controllers/newsController')
+const contractController = require('../controllers/contractController')
+
+//Overview
 router.get('/', (req, res) => {
     res.render('admin_dashboard');
 });
 
+//Account
 router.get("/account", accountController.listAccount);
 
 router.get('/account/add', (req, res) =>{
     res.render('addAccount')
 })
+
 router.post('/account/add', accountController.createAccount);
 
 router.get('/account/update/:id', accountController.updateAccount)
@@ -22,6 +27,7 @@ router.put('/account/update/:id', accountController.updateAccountPost)
 
 router.delete('/account/delete/:id',accountController.deleteAccount)
 
+//Hospital
 router.get("/hospital", hospitalController.listHospital);
 
 router.get('/hospital/add', (req, res) =>{
@@ -35,6 +41,7 @@ router.put('/hospital/update/:id', hospitalController.updateHospitalPost)
 
 router.delete('/hospital/delete/:id',hospitalController.deleteHospital)
 
+//Appointment
 router.get("/appointment", appointmentController.listAppointment);
 
 router.get('/appointment/add', (req, res) =>{
@@ -48,6 +55,7 @@ router.put('/appointment/update/:id', appointmentController.updateAppointmentPos
 
 router.delete('/appointment/delete/:id',appointmentController.deleteAppointment)
 
+//Feedback
 router.get("/feedback", feedbackController.listFeedback);
 
 router.get('/feedback/add', (req, res) =>{
@@ -61,8 +69,7 @@ router.put('/feedback/update/:id', feedbackController.updateFeedbackPost)
 
 router.delete('/feedback/delete/:id',feedbackController.deleteFeedback)
 
-
-
+//News
 router.get("/news", newsController.listNews);
 
 router.get('/news/add', (req, res) =>{
@@ -76,5 +83,14 @@ router.get('/news/update/:id', newsController.updateNews)
 router.put('/news/update/:id', newsController.updateNewslPost)
 
 router.delete('/news/delete/:id', newsController.deleteNews)
+
+//Contract
+router.get("/contract", contractController.listContract);
+
+router.get('/contract/update/:id', contractController.updateContract)
+
+router.put('/contract/update/:id', contractController.updateContractlPost)
+
+router.delete('/contract/delete/:id', contractController.deleteContract)
 
 module.exports = router;
