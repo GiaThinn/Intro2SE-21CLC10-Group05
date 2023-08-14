@@ -35,7 +35,7 @@ mongoose.connect(
 
 // Session
 const store = new MongoDBSession({
-  uri: mongoURI,
+  uri: process.env.MONGO_URI,
   collection: "sessions"
 })
 
