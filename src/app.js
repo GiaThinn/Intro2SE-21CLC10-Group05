@@ -25,9 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
 // Connect to MongoDB
-const mongoURI = `mongodb+srv://thieuquanlac:iMyQSZ5ZQLsYnJMb@cluster0.eezcbqy.mongodb.net/HealthUs?retryWrites=true&w=majority`
 mongoose.connect(
-  mongoURI,
+  process.env.MONGO_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true

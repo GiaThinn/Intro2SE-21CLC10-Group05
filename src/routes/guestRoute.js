@@ -40,11 +40,13 @@ router.get('/signup', (req, res) => {
 router.get('/forgot-password', (req, res) => {
     res.render('forgotPass');
 });
+router.post('/forgot-password', accController.forgotPassword);
 
 // Reset password
-router.get('/reset-password', (req, res) => {
-    res.render('resetPass');
+router.get('/reset-password/:username/:token', (req, res) => {
+    res.render('resetPass', { username: req.params.username, token: req.params.token });
 });
+router.post('/reset-password/:username/:token', accController.resetPassword);
 
 //News
 router.get('/news', (req, res) => {

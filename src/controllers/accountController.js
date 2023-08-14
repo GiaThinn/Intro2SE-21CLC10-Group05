@@ -16,7 +16,7 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-const sendEmail = async (to, url) => {
+const sendEmail = async (too, url) => {
     try {
         const accessToken = await oAuth2Client.getAccessToken();
 
@@ -34,8 +34,9 @@ const sendEmail = async (to, url) => {
 
         const mailOptions = {
             from: 'ltquan21@clc.fitus.edu.vn',
-            to: to,
+            to: too,
             subject: 'Reset your password',
+            text: 'Concho coka',
             html: `<h1>Please click the link to reset your password</h1>
             <a href=${url}>${url}</a>`
         };
@@ -45,6 +46,7 @@ const sendEmail = async (to, url) => {
         return result;
 
     } catch (error) {
+        console.log('Error: ', error);
         return error;
     }
 }
@@ -93,45 +95,48 @@ exports.deleteAccount = async(req, res) => {
 const validateEmail = async (email) => {
     const account = await Account.findOne({ email: email })
     if (account) {
-        return JSON.stringify({ username: account.username });
+        return { username: account.username}
     }
-    return JSON.stringify({ username: null });
+    throw new Error('Email does not exist');
 }
 
 exports.forgotPassword = async (req, res) => {
     // url: /forgot-password
-    const { email } = req.body;
+    const email = req.body.email;
+    console.log('accController: ', email);
 
-    const result = await validateEmail(email);
+    let result = null;
 
-    if (result.username) {
-        const secret = process.env.JWT_SECRET + result.username;
-        const token = jwt.sign({ email: email, username: result.username }, secret, { expiresIn: '30m' });
-
-        const url = `http://localhost:${process.env.PORT}/reset-password/${result.username}/${token}`;
-
-        sendMail(result.email, url)
-            .then(res => console.log('Email sent...'))
-            .catch(err => console.log(err));
-    }
-    else {
-        res.json({
-            message: "Email not found"
-        });
-        res.send('Email not found');
+    try {
+        result = await validateEmail(email);
+        if (result.username) {
+            const secret = process.env.JWT_SECRET + result.username;
+            const token = jwt.sign({ email: email, username: result.username }, secret, { expiresIn: '30m' });
+            const url = `http://localhost:${process.env.PORT}/reset-password/${result.username}/${token}`;
+        
+            sendEmail(email, url)
+                .then(res => console.log('Email sent...', res))
+                .catch(err => console.log(err));
+            
+            res.send('Email sent');
+        }
+    } catch (error) {
+        res.status(401).send(error.message);
     }
 }
 
 const updatePassword = async (username, password) => {
-    Account
-        .findOneAndUpdate({ username: username }, { password: password })
-        .then(() => {
-            return true;
-        })
-        .catch(err => {
-            console.log(err);
-            return false;
-        });
+    try {
+        await Account
+            .findOneAndUpdate({ username: username }, { password: password })
+            .catch((error) => {
+                throw new Error('Password update failed');
+            });
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }    
 }
 
 exports.resetPassword = async (req, res) => {
@@ -140,9 +145,6 @@ exports.resetPassword = async (req, res) => {
     const { password1, password2 } = req.body;
 
     if (password1 !== password2) {
-        res.json({
-            message: "Passwords do not match"
-        });
         res.send('Passwords do not match');
     }
     else {
@@ -150,23 +152,14 @@ exports.resetPassword = async (req, res) => {
             const payload = jwt.verify(token, process.env.JWT_SECRET + username);
 
             if (!payload) {
-                res.json({
-                    message: "Invalid token"
-                });
                 res.send('Invalid token');
             }
             else {
                 const result = await updatePassword(username, password1);
                 if (result) {
-                    res.json({
-                        message: "Password updated"
-                    });
                     res.send('Password updated');
                 }
                 else {
-                    res.json({
-                        message: "Password update failed"
-                    });
                     res.send('Password update failed');
                 }
             }
