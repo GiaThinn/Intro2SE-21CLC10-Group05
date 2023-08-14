@@ -10,6 +10,24 @@ exports.getHospitalList = async (req, res) => {
     return res.render('hospitalList', { items: result, totalPages: totalPages });
 }
 
+exports.getAllHospital = async (req, res) => {
+    const hospitals = await Hospital.find();
+    res.json({
+        items: hospitals
+    });
+}
+
+exports.getSpecbyHosID = async (req, res) => {
+    hosID = req.body.pickedID;
+    const hospital = await Hospital.find({hospitalID: hosID});
+    // console.log(hospital);
+    const specialists = hospital[0].specialists;
+    // console.log(specialists);
+    res.json({
+        items: specialists
+    });
+}
+
 
 exports.getHospitalListbyQuery = async (req, res) => {
     const page = req.query.page || 1; 
@@ -43,4 +61,58 @@ exports.getHospitalListbyQuery = async (req, res) => {
         // return res.render('hospitalList', { items: data, totalPages: totalPages });
     }
     
+}
+exports.listHospital = async (req, res) => {
+    const hospital = await Hospital.find()
+    res.render('hospital', {hospital})
+}
+
+exports.createHospital = async(req, res) =>{
+    await Hospital.create({
+        username: req.body.username,
+        hospitalID: req.body.hospitalID,
+        name: req.body.name,
+        location: req.body.location,
+        city: req.body.city,
+        contactNumber: req.body.contactNumber,
+        email: req.body.email,
+        website: req.body.website,
+        description: req.body.description,
+        specialist: req.body.specialist,
+        avatar: req.body.avatar
+    });
+    res.redirect('/admin/hospital')
+}
+
+exports.updateHospital = async(req, res) => {
+    try{
+        const hospital = await Hospital.findOne({_id: req.params.id})
+        res.render('updateHospital', {hospital})
+    } catch (error){console.log(error)}
+}
+
+exports.updateHospitalPost = async(req, res) => {
+    try{
+        await Hospital.findByIdAndUpdate(req.params.id,{
+            username: req.body.username,
+            hospitalID: req.body.hospitalID,
+            name: req.body.name,
+            location: req.body.location,
+            city: req.body.city,
+            contactNumber: req.body.contactNumber,
+            email: req.body.email,
+            website: req.body.website,
+            description: req.body.description,
+            specialist: req.body.specialist,
+            avatar: req.body.avatar
+        })
+        res.redirect('/admin/hospital')
+    } catch{}
+}
+
+exports.deleteHospital = async(req, res) => {
+    try{
+        await Hospital.deleteOne({_id: req.params.id});
+        res.redirect('/admin/hospital')
+    } catch(error){}
 }

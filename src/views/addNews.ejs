@@ -36,30 +36,29 @@
                             <div class="align-items-center w-100">
                                 <div class="card-body p-4 p-lg-5 text-black">
                                     <form action="add" method="post">
-                                        <p class="fw-normal mb-3 pb-3 display-6" style="letter-spacing: 1px; font-weight: 600!important;">CREATE ACCOUNT</p>
+                                        <p class="fw-normal mb-3 pb-3 display-6" style="letter-spacing: 1px; font-weight: 600!important;">CREATE NEWS</p>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label align-items-start d-flex">Username</label>
-                                            <input type="username" id="username" name="username" class="form-control form-control-lg" />
+                                            <label class="form-label align-items-start d-flex">Tile</label>
+                                            <input type="text" id="username" name="title" class="form-control form-control-lg" required/>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label align-items-start d-flex">Password</label>
-                                            <input type="text" id="password1" name="password" class="form-control form-control-lg" />
+                                            <label class="form-label align-items-start d-flex">Author</label>
+                                            <input type="text" id="hospitalID" name="author" class="form-control form-control-lg" required/>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label align-items-start d-flex">Email</label>
-                                            <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                                            <label class="form-label align-items-start d-flex">Content</label>
+                                            <input type="text" id="name" name="content" class="form-control form-control-lg" required/>
                                         </div>
-                                        <div class="form-floating mb-4">
-                                            <select class="form-select" id="floatingSelect" name="role" aria-label="Floating label select example">
-                                              <option selected>Choose role</option>
-                                              <option value="0">Admin</option>
-                                              <option value="1">Patient</option>
-                                              <option value="2">Hospital</option>
-                                            </select>
-                                            <label for="floatingSelect">Role</label>
-                                          </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label align-items-start d-flex">Image</label>
+                                            <input type="text" id="location" name="image" class="form-control form-control-lg" required/>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label align-items-start d-flex">Published Date</label>
+                                            <input type="date" id="city" name="publishedDate" class="form-control form-control-lg" required/>
+                                        </div>
                                         <div class="pt-1 mb-4">
-                                            <button class="btn btn-lg btn-block w-50" type="submit" style="background-color: #064420; color: #ffff;">CREATE !!</button>
+                                            <button class="btn btn-lg btn-block w-50" type="submit" style="background-color: #064420; color: #ffff;">CREATE</button>
                                         </div>
                                     </form>
                                 </div>

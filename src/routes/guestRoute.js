@@ -7,6 +7,7 @@ const hospitalController = require("../controllers/hospitalController");
 const authController = require("../controllers/authController");
 const accController = require("../controllers/accountController");
 const patController = require("../controllers/patientController");
+const contractController = require('../controllers/contractController');
 
 
 // Partnership
@@ -59,8 +60,15 @@ router.get('/single-news', (req, res) => {
 });
 
 //AddContract
+router.post('/contract-us', contractController.createContracts);
+
 router.get('/contract-us', (req, res) => {
     res.render('AddContract');
+});
+
+//FAQs page
+router.get('/FAQs', (req, res) => {
+    res.render('FAQs');
 });
 
 // Get id by username

@@ -530,8 +530,6 @@ h6 {
 /* =======================FORMS */
  
 #qbox-container {
-    background: url(../img/corona.png);
-    background-repeat: repeat;
     position: relative;
     padding: 62px;
     min-height: 630px;
@@ -1477,7 +1475,7 @@ input[type="radio"]:hover {
     align-items: flex-end;
 }
 
-.landing_page .address.text-box {
+.landing_page .address.text-box{
     display: flex;
     align-items: flex-end;
 }
