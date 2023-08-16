@@ -75,4 +75,10 @@ router.get('/FAQs', (req, res) => {
 router.post('/getID', patController.getIDbyUsername);
 router.get('/getUsn', sessionController.getbyID); // for getting username from sessionID (req.headers.authorization)
 
+// Logout
+router.get('/logout', (req, res) => {
+    res.redirect('/');
+})
+router.post('/logout', sessionController.logOut);
+
 module.exports = router;

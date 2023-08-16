@@ -41,8 +41,10 @@
   <div id="container-navbar">
     <nav class="navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img class="header-logo" src="../../public/images/logo-Header.png" alt="logoHeader"></a>
-        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="/"><img class="header-logo" src="../../public/images/logo-Header.png"
+            alt="logoHeader"></a>
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
         </button>
 
@@ -70,32 +72,20 @@
               <a class="nav-link" href="#">FAQs</a>
             </li>
             <li class="nav-item nav-button">
-              <a href="/login" class="btn">Log In</a>
+              <a href="/login" class="btn" id="login-btn">Log In</a>
             </li>
             <li class="nav-item nav-button">
-              <a href="/signup" class="btn">Sign Up</a>
+              <a href="/signup" class="btn" id="signup-btn">Sign Up</a>
+            </li>
+            <li class="nav-item nav-page">
+              <a class="nav-link" style="display: none;" id="username">Guest</a>
+            </li>
+            <li class="nav-item nav-button">
+              <a class="btn" style="display: none;" id="logout-btn">Log Out</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  </div>  
-  <script>
-    var prevScrollpos = window.scrollY;
-      window.onscroll = function () {
-        var currentScrollPos = window.scrollY;
-        if (prevScrollpos > currentScrollPos) {
-          document.getElementById("container-navbar").style.top = "0";
-          document.getElementById("navbarsExampleDefault").style.top = "0";
-          document.querySelector('.offcanvas-collapse').style.top = "90.74px"
-        } else {
-          document.getElementById("container-navbar").style.top = "-100%";
-          document.getElementById("navbarsExampleDefault").style.top = "-100%";
-          document.querySelector('.offcanvas-collapse').style.top = "90.74px"
-        }
-        prevScrollpos = currentScrollPos;
-      }
-    document.querySelector('#navbarSideCollapse').addEventListener('click', function () {
-      document.querySelector('.offcanvas-collapse').classList.toggle('open')
-    })
-  </script>
+  </div>
+  <script type="text/javascript" src="../public/js/header.js"></script>

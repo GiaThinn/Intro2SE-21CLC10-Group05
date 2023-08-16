@@ -15,16 +15,17 @@ exports.roleAuth = async (req, res) => {
             
             if (account.role === 0) {
                 req.session.user.role = 'admin';
-                res.redirect('/admin/dashboard');
+                res.redirect('/admin');
             }
             else if (account.role === 2) {
                 req.session.user.role = 'hospital';
                 res.redirect('/hospital');
             }
             else {
-                // res.redirect('/');
-                console.log(req.sessionID);
-                res.send('Logged in');
+                req.session.user.role = 'patient';
+                res.redirect('/');
+                // console.log(req.sessionID);
+                // res.send('Logged in');
             }
         }
         else {

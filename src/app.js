@@ -45,7 +45,7 @@ app.use(session({
   saveUninitialized: false,
   store: store,
   cookie: {
-    secure: true,
+    secure: false,
     maxAge: 1000 * 60 * 60
   }
 }))
@@ -56,6 +56,8 @@ db.once("open", () => {
   console.log("Connected to database successfully");
 });
 
+// // get username middleware
+// app.use(sessionHandler.getUsername)
 
 // Routes
 app.use("/", guestRoute);

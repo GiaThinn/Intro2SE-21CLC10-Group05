@@ -21,7 +21,7 @@ $(document).ready(function () {
             }
             listSliderItem.append($(`
                     <div class="card">
-                        <div class="card-img"><img src="${item.image.url}" class="d-block w-100" alt="Image ${idx}"></div>
+                        <div class="card-img"><img src="${item.avatar}" class="d-block w-100" alt="Image ${idx}"></div>
                         <div class="card-body">
                             <a class="card-title h5 text-decoration-none" href="#">${item.name}</a>
                             <p class="card-text">${item.description}</p>
