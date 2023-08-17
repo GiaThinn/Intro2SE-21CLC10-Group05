@@ -51,6 +51,17 @@ const sendEmail = async (too, url) => {
     }
 }
 
+exports.signupAccount = async(req, res) =>{
+    console.log(req.body)
+    await Account.create({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        role: 1
+    });
+    res.redirect('/login')
+}
+
 exports.listAccount = async (req, res) => {
     const account = await Account.find()
     res.render('account', {account})

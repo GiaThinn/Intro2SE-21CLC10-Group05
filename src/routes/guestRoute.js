@@ -37,6 +37,8 @@ router.get('/signup', (req, res) => {
     res.render('signUp');
 });
 
+router.post('/signup', accController.signupAccount);
+
 // Forgot password
 router.get('/forgot-password', (req, res) => {
     res.render('forgotPass');
