@@ -116,3 +116,20 @@ exports.deleteHospital = async(req, res) => {
         res.redirect('/admin/hospital')
     } catch(error){}
 }
+
+exports.getIDbyUsername = async (req, res) => {
+    const username = req.body.username;
+    
+    await Hospital
+    .findOne({username: username})
+    .then(result => {
+        res.json({
+            id: result.hospitalID
+        });
+    })
+    .catch(err => {
+        res.status(500).json({
+            message: "Error retrieving Account ID with username=" + username
+        });
+    });
+}

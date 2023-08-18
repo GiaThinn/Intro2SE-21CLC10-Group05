@@ -1,73 +1,36 @@
 <%- include("partials/hos_sidebar.ejs"); %>
-<%- include("partials/table.ejs"); %>
-<div class="row">
-  <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2">
-    <!-- Sidebar -->
-
-  </div>
-
-  <div class="col-sm-9 col-md-6 col-lg-8 col-xl-10"  style="width:95%; padding-left: 20rem;">
-    <br>
-    <div class="row">
-      <a href="doctor/add">
-        <button type="button" class="btn btn-outline-success" style="float: right; margin-bottom: 0.5rem;">Create new doctor</button>
-      </a>
+<div class="container-list">
+    <div class="title-and-create">
+        <div class="title">
+            <h2>List Doctor</h2>
+        </div>
+        <div class="create-button">
+            <a class="btn btn-outline-primary" href="doctor/add" role="button">Create New</a>
+        </div>
     </div>
-    <table id="example" class="table table-hover table-bordered table-responsive">
-      <thead>
-        <tr>
-          <th>Doctor ID</th>
-          <th>Name</th>
-          <th>Hospital ID</th>
-          <th>Specialist</th>
-          <th>Phone Number</th>
-          <th>DOB</th>
-          <th>Gender</th>
-          <th>Email</th>
-          <th>Experience</th>
-          <th>Description</th>
-          <th>Avatar</th>
-          <th>Schedule</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% doctor.forEach((doc)=>{%>
-            <tr>
-              <td><%= doc.doctorID%></td>
-              <td><%= doc.name%></td>
-              <td><%= doc.hospitalID%></td>
-              <td><%= doc.specialist%></td>
-              <td><%= doc.phone%></td>
-              <td><%= doc.birth%></td>
-              <td><%= doc.gender%></td>
-              <td><%= doc.email%></td>
-              <td><%= doc.yearExp%></td>
-              <td><%= doc.description%></td>
-              <td><%= doc.avatar%></td>
-              <td><%= doc.schedule%></td>
-              <td>
-                <!-- <% if (doc.role == '0') {%> Admin
-                <%} else if (doc.role == '1') {%> Patient
-                <%} else { %> Hospital <%}%> -->
-              </td>
-              <td>
-                <div class="row">
-                  <div class="col" style="max-width:10%;">
-                <a href="#" class="text-success">
-                  <i class="fa-solid fa-pencil" style="margin-top: 0.5rem"></i>
-                </a>
-              </div>
-              <div class="col">
-                <form action="#">
-                  <button type="submit" class="btn">
-                    <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
-                  </button>
-                </form>
-              </div>
-              </td>
-            </tr>
-          <% }) %>
-      </tbody>
-    </table>
-  </div>
+    <div class="list-table">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col"># Doctor</th>
+                <th scope="col">Name</th>
+                <th scope="col"># Hospital</th>
+                <th scope="col">Specialist</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Email</th>
+                <th scope="col">Experience</th>
+                <th scope="col">Description</th>
+                <th scope="col">Avatar</th>
+                <th scope="col">Schedule</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="list-doctor">
+              
+            </tbody>
+          </table>
+        <script type="text/javascript" src="../public/js/hospitalDoctor.js"></script>
+    </div>
 </div>

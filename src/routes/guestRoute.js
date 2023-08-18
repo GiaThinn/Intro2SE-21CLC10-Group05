@@ -8,7 +8,7 @@ const authController = require("../controllers/authController");
 const accController = require("../controllers/accountController");
 const patController = require("../controllers/patientController");
 const contractController = require('../controllers/contractController');
-
+const doctorController = require('../controllers/doctorController');
 
 // Partnership
 router.get('/partnership', (req, res) => {
@@ -77,6 +77,8 @@ router.get('/FAQs', (req, res) => {
 router.post('/getID', patController.getIDbyUsername);
 router.get('/getUsn', sessionController.getbyID); // for getting username from sessionID (req.headers.authorization)
 
+router.post('/getHosIDbyUsn', hospitalController.getIDbyUsername);
+router.post('/getDocofHos',doctorController.getDocbyHosID);
 // Logout
 router.get('/logout', (req, res) => {
     res.redirect('/');
