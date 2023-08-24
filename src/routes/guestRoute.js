@@ -75,6 +75,8 @@ router.get('/FAQs', (req, res) => {
 router.post('/getID', patController.getIDbyUsername);
 router.get('/getUsn', sessionController.getbyID); // for getting username from sessionID (req.headers.authorization)
 
+router.post('/getHosIDbyUsn', hospitalController.getIDbyUsername);
+
 // Logout
 router.get('/logout', (req, res) => {
     res.redirect('/');
