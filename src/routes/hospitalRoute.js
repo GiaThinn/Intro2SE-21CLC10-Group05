@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const doctorController = require('../controllers/doctorController')
 const hospitalController = require('../controllers/hospitalController')
+const hospitalController = require('../controllers/hospitalController')
 router.get('/', (req, res) => {
     res.render('hospital_dashboard');
 });
@@ -18,8 +19,5 @@ router.get('/doctor/update/:id', doctorController.updateDoctorGet)
 
 router.put('/doctor/update/:id', doctorController.updateDoctorPost)
 
-router.get('/doctor/delete/:id',doctorController.deleteDoctor)
-
-router.post('/getSpecofHos', hospitalController.getSpecbyHosID)
-router.post('/addNewDoctor', doctorController.createDoctor);
+router.delete('/doctor/delete/:id',doctorController.deleteDoctor)
 module.exports = router;

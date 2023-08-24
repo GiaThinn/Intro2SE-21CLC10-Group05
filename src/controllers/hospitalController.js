@@ -20,7 +20,6 @@ exports.getAllHospital = async (req, res) => {
 exports.getSpecbyHosID = async (req, res) => {
     hosID = req.body.pickedID;
     const hospital = await Hospital.find({hospitalID: hosID});
-    // console.log(hospital);
     const specialists = hospital[0].specialists;
     // console.log(specialists);
     res.json({
@@ -119,17 +118,83 @@ exports.deleteHospital = async(req, res) => {
 
 exports.getIDbyUsername = async (req, res) => {
     const username = req.body.username;
-    
+    let getAll = null
+    getAll = req.query.getAllField;
+
     await Hospital
     .findOne({username: username})
     .then(result => {
-        res.json({
-            id: result.hospitalID
-        });
+        if (getAll !== null) {
+            res.json({
+                data: result
+            });
+        }
+        else {
+            res.json({
+                id: result.hospitalID
+            });
+        }
     })
     .catch(err => {
         res.status(500).json({
             message: "Error retrieving Account ID with username=" + username
+        });
+    });
+}
+
+exports.createSpecialist = async (req, res) => {
+    const hospitalID = req.params.id;
+
+    // append new specialist to the array of hospital 
+    const new_specialist = {
+        specName: req.body.specName,
+        specDescription: req.body.specDescription
+    }
+
+    await Hospital.findOneAndUpdate({hospitalID: hospitalID}, {$push: {specialists: new_specialist}}, {new: true})
+    .then(data => {
+        res.redirect('/hospital/specialist')
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while creating the specialist."
+        });
+    });
+}
+
+exports.updateSpecialist = async (req, res) => {
+    const hospitalID = req.params.id;
+    const specID = req.params.specID;
+
+    // update specialist
+    const new_specialist = {
+        specName: req.body.specName,
+        specDescription: req.body.specDescription
+    }
+
+    await Hospital.findOneAndUpdate({hospitalID: hospitalID, "specialists._id": specID}, {$set: {"specialists.$": new_specialist}}, {new: true})
+    .then(data => {
+        res.redirect('/hospital/specialist')
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while updating the specialist."
+        });
+    });
+}
+
+exports.deleteSpecialist = async (req, res) => {
+    const hospitalID = req.params.id;
+    const specName = req.params.specName;
+
+    // delete only the specialist with specName
+    await Hospital.findOneAndUpdate({hospitalID: hospitalID}, {$pull: {specialists: {specName: specName}}}, {new: true})
+    .then(data => {
+        res.redirect('/hospital/specialist')
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while deleting the specialist."
         });
     });
 }
