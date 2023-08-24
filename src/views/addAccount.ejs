@@ -71,6 +71,9 @@
                 <div class="mb-3">
                     <label class="small mb-1" for="username">Username</label>
                     <input type="username" id="username" name="username" class="form-control form-control-lg" placeholder="Enter your username">
+                    <% if (locals.errorMessage) { %>
+                      <div class="small text-danger"><%= errorMessage %></div>
+                    <% } %>
                   </div>
                   <div class="mb-3">
                       <label class="small mb-1" for="password1">Password</label>
