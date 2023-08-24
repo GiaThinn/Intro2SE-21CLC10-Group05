@@ -44,7 +44,7 @@ const DoctorSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        required: true
+        required: false
     },
     schedule: {
         type: Array,

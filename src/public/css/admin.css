@@ -74,3 +74,29 @@ ul {
 div.dataTables_wrapper div.dataTables_filter {
   text-align: center;
 }
+
+/* doctor */
+th, td{
+  margin: 0 5px;
+}
+.container-list{
+  padding: 100px 50px 50px 300px;
+  width: fit-content;
+}
+.title-and-create{
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center;  */
+  margin-bottom: 20px;
+  
+}
+.title{
+  margin: 0 0 10px;
+}
+.icon{
+  margin: 0 5px;
+}
+.col{
+  text-align: center;
+}
+/* end of doctor */

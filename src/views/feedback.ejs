@@ -19,16 +19,21 @@
         <tr>
           <th>Hospital ID</th>
           <th>Patient ID</th>
+          <th>Content</th>
           <th>Date</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <% feedback.forEach((fdb)=>{%>
+          <%let D = new Date(fdb.date);%>
+          <%const options = {month: 'long', day: 'numeric', year: 'numeric' };%>
+          <%D = D.toLocaleString('en-US', options);%>
         <tr>
           <td><%= fdb.hospitalID%></td>
           <td><%= fdb.patientID%></td>
-          <td><%= fdb.date%></td>
+          <td style="max-width: 600px;"><%= fdb.content%></td>
+          <td><%= D%></td>
           <td>
             <div class="row">
               <div class="col">

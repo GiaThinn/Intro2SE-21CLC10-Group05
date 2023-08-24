@@ -3,6 +3,7 @@ const Account = require("../models/accounts")
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
+const Patient = require("../models/patients")
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -49,6 +50,24 @@ const sendEmail = async (too, url) => {
         console.log('Error: ', error);
         return error;
     }
+}
+
+exports.signupAccount = async(req, res) =>{
+    await Account.create({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        role: 1
+    });
+    count = await Patient.countDocuments() + 1
+    count = count.toString().padStart(4, '0')
+    await Patient.create({
+        username: req.body.username,
+        idUser: "pat" + count,
+        name: req.body.name,
+        phone: req.body.phone
+    })
+    res.redirect('/login')
 }
 
 exports.listAccount = async (req, res) => {

@@ -24,12 +24,15 @@
           <th>Doctor ID</th>
           <th>Specialist</th>
           <th>Date</th>
-          <th>Time</th>
+          <th>Shift</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <% appointment.forEach((apt)=>{%>
+          <%let D = new Date(apt.date);%>
+          <%const options = {month: 'long', day: 'numeric', year: 'numeric' };%>
+          <%D = D.toLocaleString('en-US', options);%>
         <tr>
           <td><%= apt.appointmentID%></td>
           <td><%= apt.patientID%></td>
@@ -38,13 +41,13 @@
           <td><%= apt.doctorID%></td>
           <td><%= apt.specialist%></td>
 
-          <td><%= apt.date%></td>
-
-          <td>
-            <% if (apt.time == '1') {%> Shift 1 
-            <%} else if (apt.time == '2') {%> Shift 2 
-            <%} else if (apt.time == '3') {%> Shift 3 
-            <%} else {%> Shift 4 <%}%>
+          <td><%= D%></td>
+          <td style="min-width: 150px;">
+            <%= apt.time%>
+            <% if (apt.time == '1') {%> (7:30 - 9:30) 
+              <%} else if (apt.time == '2') {%> (9:30 - 11:30) 
+              <%} else if (apt.time == '3') {%> (13:30 - 15:30)
+              <%} else {%> (15:30 - 17:30) <%}%>
           </td>
           <td>
             <div class="row">

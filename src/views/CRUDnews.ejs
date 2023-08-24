@@ -25,13 +25,16 @@
       </thead>
       <tbody>
         <% newdata.forEach((news)=>{%>
+          <%let D = new Date(news.publishedDate);%>
+          <%const options = {month: 'long', day: 'numeric', year: 'numeric' };%>
+          <%D = D.toLocaleString('en-US', options);%>
         <tr>
             <td><%= news.title %></td>
             <td><%= news.author %></td>
             <td><%= news.content %></td>
             <!-- <td><%= news.image %></td> -->
             <td>tk lon nao add thieu img</td>
-            <td><%= news.publishedDate %></td>
+            <td><%= D %></td>
           <td>
             <div class="row">
               <div class="col" style="max-width:10%;">
