@@ -119,7 +119,9 @@ exports.deleteHospital = async(req, res) => {
 exports.getIDbyUsername = async (req, res) => {
     const username = req.body.username;
     let getAll = null
-    getAll = req.query.getAllField;
+    if (req.query.getAllField !== undefined) {
+        getAll = req.query.getAllField;
+    }
 
     await Hospital
     .findOne({username: username})

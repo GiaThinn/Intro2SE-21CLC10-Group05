@@ -130,7 +130,7 @@ exports.forgotPassword = async (req, res) => {
         result = await validateEmail(email);
         if (result.username) {
             const secret = process.env.JWT_SECRET + result.username;
-            const token = jwt.sign({ email: email, username: result.username }, secret, { expiresIn: '30m' });
+            const token = jwt.sign({ email: email, username: result.username }, secret, { expiresIn: '30s' });
             const url = `http://localhost:${process.env.PORT}/reset-password/${result.username}/${token}`;
         
             sendEmail(email, url)
@@ -140,7 +140,7 @@ exports.forgotPassword = async (req, res) => {
             res.send('Email sent');
         }
     } catch (error) {
-        res.status(401).send(error.message);
+        res.send('Email does not exist');
     }
 }
 
