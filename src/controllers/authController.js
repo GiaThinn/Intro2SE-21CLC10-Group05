@@ -29,12 +29,11 @@ exports.roleAuth = async (req, res) => {
             }
         }
         else {
-            console.log('Login failed');
-            res.redirect('/login');
+            throw new Error('Username or password is incorrect');
         }
     })
     .catch(err => {
-        console.error(err);
-        res.status(500).send('Internal server error');
+        console.error('From auth', err);
+        res.redirect('/login');
     })
 }

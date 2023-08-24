@@ -76,13 +76,37 @@ exports.listAccount = async (req, res) => {
 }
 
 exports.createAccount = async(req, res) =>{
-    await Account.create({
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-        role: req.body.role
-    });
-    res.redirect('/admin/account')
+    const { username, password, email, role } = req.body;
+
+    // Check if the username already exists
+    const existingAccount = await Account.findOne({ username });
+    let errorMessage = ''; // Initialize errorMessage
+
+    if (existingAccount) {
+        errorMessage = 'Username already exists. Please choose a different username.';
+        res.render('addAccount', {
+            errorMessage: errorMessage, // Pass errorMessage to the view
+            username: username,
+            password: password,
+            email: email,
+            role: role
+        });
+    } else {
+        try {
+            await Account.create({
+                username,
+                password,
+                email,
+                role
+            });
+
+            // Redirect to a success page or the account listing page
+            res.redirect('/admin/account');
+        } catch (error) {
+            console.error('Error creating account:', error);
+            // Render an error page or handle the error as needed
+        }
+    }
 }
 
 exports.updateAccount = async(req, res) => {
@@ -130,7 +154,7 @@ exports.forgotPassword = async (req, res) => {
         result = await validateEmail(email);
         if (result.username) {
             const secret = process.env.JWT_SECRET + result.username;
-            const token = jwt.sign({ email: email, username: result.username }, secret, { expiresIn: '30m' });
+            const token = jwt.sign({ email: email, username: result.username }, secret, { expiresIn: '30s' });
             const url = `http://localhost:${process.env.PORT}/reset-password/${result.username}/${token}`;
         
             sendEmail(email, url)
@@ -140,7 +164,7 @@ exports.forgotPassword = async (req, res) => {
             res.send('Email sent');
         }
     } catch (error) {
-        res.status(401).send(error.message);
+        res.send('Email does not exist');
     }
 }
 
