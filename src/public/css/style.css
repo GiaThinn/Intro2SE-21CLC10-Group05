@@ -1495,11 +1495,13 @@ input[type="radio"]:hover {
     max-width: 450px;
     display: flex;
     justify-content: space-evenly;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .landing_page .img {
-    width: 31px;
-    height: 31px;
+    width: 35px;
+    height: 35px;
 }
 
 .landing_page .responsive-container-block.big-container {
