@@ -17,10 +17,7 @@
     <table id="example" class="table table-hover table-bordered table-responsive">
       <thead>
         <tr>
-          <th>Appointment ID</th>
-          <th>Patient ID</th>
           <th>Profile ID</th>
-          <th>Hospital ID</th>
           <th>Doctor ID</th>
           <th>Specialist</th>
           <th>Date</th>
@@ -34,10 +31,7 @@
           <%const options = {month: 'long', day: 'numeric', year: 'numeric' };%>
           <%D = D.toLocaleString('en-US', options);%>
         <tr>
-          <td><%= apt.appointmentID%></td>
-          <td><%= apt.patientID%></td>
           <td><%= apt.profileID%></td>
-          <td><%= apt.hospitalID%></td>
           <td><%= apt.doctorID%></td>
           <td><%= apt.specialist%></td>
 
