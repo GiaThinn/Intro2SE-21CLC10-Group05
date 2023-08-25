@@ -1,7 +1,4 @@
 <%- include("partials/header"); %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- Big title with background  -->
 <div class="masthead" style="background-color: gainsboro; height: 275px;">
   <div class="container-fluid">
@@ -23,16 +20,16 @@
         <a class="list-group-item list-group-item-action active" id="list-faq" data-bs-toggle="list" role="tab" aria-controls="list-faq" >FAQs</a>
       </div>
       <ul class="nav flex-column" style="font-size: 23px; font-weight:bold">
-        <li class="active"><a data-toggle="tab" href="#general">Vấn đề chung</a></li>
-        <li><a data-toggle="tab" href="#account">Vấn đề về tài khoản</a></li>
-        <li><a data-toggle="tab" href="#booking">Vấn đề về quy trình đặt khám</a></li>
-        <li><a data-toggle="tab" href="#payment">Vấn đề về thanh toán</a></li>
+        <li class="active nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#general">Vấn đề chung</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#account">Vấn đề về tài khoản</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#booking">Vấn đề về quy trình đặt khám</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#payment">Vấn đề về thanh toán</a></li>
       </ul>
     </div>
     <div class="col-12 col-sm-6 col-md-8" style="width: 1025px">
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="tab-content">
-          <div id="general" class="tab-pane fade in active">
+          <div id="general" class="tab-pane fade show active">
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="font-size: 21px; font-weight:normal">
