@@ -20,6 +20,10 @@ router.get('/doctor/update/:id', doctorController.updateDoctorGet)
 router.put('/doctor/update/:id', doctorController.updateDoctorPost)
 
 router.delete('/doctor/delete/:id',doctorController.deleteDoctor)
+router.get('/doctor/delete/:id',doctorController.deleteDoctor)
+
+router.post('/getSpecofHos', hospitalController.getSpecbyHosID)
+router.post('/addNewDoctor', doctorController.createDoctor);
 
 // Specialist
 router.get('/specialist', (req, res) => {
