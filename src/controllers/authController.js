@@ -34,6 +34,6 @@ exports.roleAuth = async (req, res) => {
     })
     .catch(err => {
         console.error('From auth', err);
-        res.redirect('/login');
+        res.status(400).send(err.message);
     })
 }
