@@ -6,9 +6,10 @@ const appointmentController = require('../controllers/appointmentController')
 const feedbackController = require('../controllers/feedbackController')
 const newsController = require('../controllers/newsController')
 const contractController = require('../controllers/contractController')
+const authentication = require('../middleware/authentication');
 
 //Overview
-router.get('/', (req, res) => {
+router.get('/', authentication.adminAuth, (req, res) => {
     res.render('admin_dashboard');
 });
 

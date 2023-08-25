@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const doctorController = require('../controllers/doctorController')
 const hospitalController = require('../controllers/hospitalController')
+const authentication = require('../middleware/authentication');
 // const hospitalController = require('../controllers/hospitalController')
-router.get('/', (req, res) => {
+router.get('/', authentication.hospitalAuth, (req, res) => {
     res.render('hospital_dashboard');
 });
 

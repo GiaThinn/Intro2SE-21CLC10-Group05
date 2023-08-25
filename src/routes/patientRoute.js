@@ -6,7 +6,7 @@ const hospital = require('../controllers/hospitalController');
 const doctor = require('../controllers/doctorController');
 const appointment = require('../controllers/appointmentController');
 
-router.get('/making-appointment', (req, res) => {
+router.get('/making-appointment', authentication.isLogged, (req, res) => {
     res.render('makeAppoint');
 });
 

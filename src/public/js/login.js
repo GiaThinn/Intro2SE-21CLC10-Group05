@@ -7,6 +7,11 @@ $(document).ready(function () {
         const username = $('#username').val();
         const password = $('#password').val();
 
+        if (!username || !password) {
+            alert('Please fill in all fields');
+            return;
+        }
+
         // post data to server
         fetch('/login', {
             method: 'POST',
@@ -18,6 +23,10 @@ $(document).ready(function () {
         .then(res => {
             if (res.redirected && res.status === 200) {
                 window.location.href = res.url;
+            }
+            else {
+                alert('Username or password is incorrect');
+                throw new Error('Username or password is incorrect');
             }
         })
     });
