@@ -18,9 +18,9 @@
 const form = document.querySelector(".contract-form");
 
 // Get the input elements
-const fullnameInput = document.getElementById("i10mt-7");
-const emailInput = document.getElementById("ityct");
-const messageInput = document.getElementById("i634i-7");
+const fullnameInput = document.getElementById("hospitalName");
+const emailInput = document.getElementById("contractEmail");
+const messageInput = document.getElementById("content");
 const iconsContainer = document.querySelector(".icons-container");
 
 // Get the icons
