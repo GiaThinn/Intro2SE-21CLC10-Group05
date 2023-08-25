@@ -79,13 +79,36 @@ exports.createAccount = async(req, res) =>{
     const { username, password, email, role } = req.body;
 
     // Check if the username already exists
-    const existingAccount = await Account.findOne({ username });
-    let errorMessage = ''; // Initialize errorMessage
-
-    if (existingAccount) {
-        errorMessage = 'Username already exists. Please choose a different username.';
+    const existingUsername = await Account.findOne({ username });
+    const existingEmail = await Account.findOne({ email });
+    let errorMessage1 = ''; // Initialize errorMessage1
+    let errorMessage2 = '';
+    if (existingUsername) {
+        errorMessage1 = 'Username already exists. Please choose a different username.';
         res.render('addAccount', {
-            errorMessage: errorMessage, // Pass errorMessage to the view
+            errorMessage1: errorMessage1, // Pass errorMessage1 to the view
+            username: username,
+            password: password,
+            email: email,
+            role: role
+        });
+    }
+    else if (existingEmail){
+        errorMessage2 = 'Email already exists. Please choose a different email.';
+        res.render('addAccount', {
+            errorMessage2: errorMessage2, // Pass errorMessage1 to the view
+            username: username,
+            password: password,
+            email: email,
+            role: role
+        });
+    }
+    else if(existingEmail && existingUsername){
+        errorMessage1 = 'Username already exists. Please choose a different username.';
+        errorMessage2 = 'Email already exists. Please choose a different email.';
+        res.render('addAccount', {
+            errorMessage1: errorMessage1, // Pass errorMessage1 to the view
+            errorMessage2: errorMessage2,
             username: username,
             password: password,
             email: email,

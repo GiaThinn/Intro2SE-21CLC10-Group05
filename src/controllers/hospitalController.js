@@ -67,20 +67,68 @@ exports.listHospital = async (req, res) => {
 }
 
 exports.createHospital = async(req, res) =>{
-    await Hospital.create({
-        username: req.body.username,
-        hospitalID: req.body.hospitalID,
-        name: req.body.name,
-        location: req.body.location,
-        city: req.body.city,
-        contactNumber: req.body.contactNumber,
-        email: req.body.email,
-        website: req.body.website,
-        description: req.body.description,
-        specialist: req.body.specialist,
-        avatar: req.body.avatar
-    });
-    res.redirect('/admin/hospital')
+    const {username, hospitalID, name, location,city,contactNumber, email, website, description, specialist, avatar } = req.body;
+
+    // Check if the username already exists
+    const existingUsername = await Hospital.findOne({ username });
+    const existingHospitalID = await Hospital.findOne({ hospitalID });
+    let errorMessage1 = ''; // Initialize errorMessage
+    let errorMessage2 = '';
+    if (existingUsername) {
+        errorMessage1 = 'Username already exists. Please choose a different one.';
+        res.render('addHospital', {
+            errorMessage1: errorMessage1, // Pass errorMessage to the view
+            username: username,
+            hospitalID: hospitalID,
+            name: name,
+            location: location,
+            city: city,
+            contactNumber: contactNumber,
+            email: email,
+            website: website,
+            description: description,
+            specialist: specialist,
+            avatar: avatar
+        });
+    } else if (existingHospitalID){
+        errorMessage2 = 'Hospital ID already exists. Please choose a different ID.';
+        res.render('addHospital', {
+            errorMessage2: errorMessage2, // Pass errorMessage to the view
+            username: username,
+            hospitalID: hospitalID,
+            name: name,
+            location: location,
+            city: city,
+            contactNumber: contactNumber,
+            email: email,
+            website: website,
+            description: description,
+            specialist: specialist,
+            avatar: avatar
+        });
+    } else {
+        try {
+            await Hospital.create({
+            username,
+            hospitalID,
+            name,
+            location,
+            city,
+            contactNumber,
+            email,
+            website,
+            description,
+            specialist,
+            avatar
+            });
+
+            // Redirect to a success page or the account listing page
+            res.redirect('/admin/hospital');
+        } catch (error) {
+            console.error('Error creating hospital:', error);
+            // Render an error page or handle the error as needed
+        }
+    }
 }
 
 exports.updateHospital = async(req, res) => {

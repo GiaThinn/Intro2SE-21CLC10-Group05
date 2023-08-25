@@ -36,13 +36,45 @@ exports.listAppointment = async (req, res) => {
 }
 
 exports.createAppointment = async(req, res) =>{
-    await Appointment.create({
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-        role: req.body.role
-    });
-    res.redirect('/admin/appointment')
+    const {appointmentID, patientID, profileID, hospitalID,doctorID,specialist, date, time } = req.body;
+
+    // Check if the username already exists
+    const existingAppointment = await Appointment.findOne({ appointmentID });
+    let errorMessage = ''; // Initialize errorMessage
+
+    if (existingAppointment) {
+        errorMessage = 'Appointment ID already exists. Please choose a different ID.';
+        res.render('addAppointment', {
+            errorMessage: errorMessage, // Pass errorMessage to the view
+            appointmentID: appointmentID,
+            patientID: patientID,
+            profileID: profileID,
+            hospitalID: hospitalID,
+            doctorID: doctorID,
+            specialist: specialist,
+            date: date,
+            time: time
+        });
+    } else {
+        try {
+            await Appointment.create({
+                appointmentID,
+                patientID,
+                profileID,
+                hospitalID,
+                doctorID,
+                specialist,
+                date,
+                time
+            });
+
+            // Redirect to a success page or the account listing page
+            res.redirect('/admin/appointment');
+        } catch (error) {
+            console.error('Error creating appointment:', error);
+            // Render an error page or handle the error as needed
+        }
+    }
 }
 
 exports.updateAppointment = async(req, res) => {
