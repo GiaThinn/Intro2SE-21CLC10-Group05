@@ -3,6 +3,7 @@ const router = express.Router();
 const doctorController = require('../controllers/doctorController')
 const hospitalController = require('../controllers/hospitalController')
 const authentication = require('../middleware/authentication');
+const appointController = require('../controllers/appointmentController');
 // const hospitalController = require('../controllers/hospitalController')
 router.get('/', authentication.hospitalAuth, (req, res) => {
     res.render('hospital_dashboard');
@@ -41,4 +42,11 @@ router.post('/specialist/add/:id', hospitalController.createSpecialist);
 // router.put('/specialist/update/:id', feedbackController.updateFeedbackPost)
 
 router.delete('/specialist/delete/:id/:specName', hospitalController.deleteSpecialist)
+
+
+router.get('/appointment', function(req, res){
+    res.render('hospital_appointment');
+})
+
+router.post('/getAppofHos',appointController.getAppbyHosID);
 module.exports = router;
