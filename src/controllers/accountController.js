@@ -52,7 +52,7 @@ const sendEmail = async (too, url) => {
     }
 }
 
-exports.signupAccount = async(req, res) =>{
+exports.signupAccount = async (req, res) => {
     await Account.create({
         username: req.body.username,
         password: req.body.password,
@@ -69,13 +69,75 @@ exports.signupAccount = async(req, res) =>{
     })
     res.redirect('/login')
 }
+exports.signupAccount = async (req, res) => {
+    const { username, password, email, role } = req.body;
+
+    // Check if the username already exists
+    const existingUsername = await Account.findOne({ username });
+    const existingEmail = await Account.findOne({ email });
+    let errorMessage1 = ''; // Initialize errorMessage1
+    let errorMessage2 = '';
+    if (existingUsername) {
+        errorMessage1 = 'Username already exists. Please choose a different one.';
+        res.render('signup', {
+            errorMessage1: errorMessage1, // Pass errorMessage1 to the view
+            username: username,
+            password: password,
+            email: email,
+            role: role
+        });
+    }
+    else if (existingEmail) {
+        errorMessage2 = 'Email already exists. Please choose a different one.';
+        res.render('signup', {
+            errorMessage2: errorMessage2, // Pass errorMessage1 to the view
+            username: username,
+            password: password,
+            email: email,
+            role: role
+        });
+    }
+    else if (existingEmail && existingUsername) {
+        errorMessage1 = 'Username already exists. Please choose a different username.';
+        errorMessage2 = 'Email already exists. Please choose a different email.';
+        res.render('addAccount', {
+            errorMessage1: errorMessage1, // Pass errorMessage1 to the view
+            errorMessage2: errorMessage2,
+            username: username,
+            password: password,
+            email: email,
+            role: role
+        });
+    } else {
+        try {
+            await Account.create({
+                username,
+                password,
+                email,
+                role: 1,
+            });
+            count = await Patient.countDocuments() + 1
+            count = count.toString().padStart(4, '0')
+            await Patient.create({
+                username: req.body.username,
+                idUser: "pat" + count,
+                name: req.body.name,
+                phone: req.body.phone
+            });
+            res.redirect('/login');
+        }catch (error) {
+            console.error('Error creating account:', error);
+            // Render an error page or handle the error as needed
+        }
+    } 
+}
 
 exports.listAccount = async (req, res) => {
     const account = await Account.find()
-    res.render('account', {account})
+    res.render('account', { account })
 }
 
-exports.createAccount = async(req, res) =>{
+exports.createAccount = async (req, res) => {
     const { username, password, email, role } = req.body;
 
     // Check if the username already exists
@@ -93,7 +155,7 @@ exports.createAccount = async(req, res) =>{
             role: role
         });
     }
-    else if (existingEmail){
+    else if (existingEmail) {
         errorMessage2 = 'Email already exists. Please choose a different email.';
         res.render('addAccount', {
             errorMessage2: errorMessage2, // Pass errorMessage1 to the view
@@ -103,7 +165,7 @@ exports.createAccount = async(req, res) =>{
             role: role
         });
     }
-    else if(existingEmail && existingUsername){
+    else if (existingEmail && existingUsername) {
         errorMessage1 = 'Username already exists. Please choose a different username.';
         errorMessage2 = 'Email already exists. Please choose a different email.';
         res.render('addAccount', {
@@ -132,36 +194,36 @@ exports.createAccount = async(req, res) =>{
     }
 }
 
-exports.updateAccount = async(req, res) => {
-    try{
-        const account = await Account.findOne({_id: req.params.id})
-        res.render('updateAccount', {account})
-    } catch (error){console.log(error)}
+exports.updateAccount = async (req, res) => {
+    try {
+        const account = await Account.findOne({ _id: req.params.id })
+        res.render('updateAccount', { account })
+    } catch (error) { console.log(error) }
 }
 
-exports.updateAccountPost = async(req, res) => {
-    try{
-        await Account.findByIdAndUpdate(req.params.id,{
+exports.updateAccountPost = async (req, res) => {
+    try {
+        await Account.findByIdAndUpdate(req.params.id, {
             username: req.body.username,
             password: req.body.password,
             email: req.body.email,
             role: req.body.role
         })
         res.redirect('/admin/account')
-    } catch{}
+    } catch { }
 }
 
-exports.deleteAccount = async(req, res) => {
-    try{
-        await Account.deleteOne({_id: req.params.id});
+exports.deleteAccount = async (req, res) => {
+    try {
+        await Account.deleteOne({ _id: req.params.id });
         res.redirect('/admin/account')
-    } catch(error){}
+    } catch (error) { }
 }
 
 const validateEmail = async (email) => {
     const account = await Account.findOne({ email: email })
     if (account) {
-        return { username: account.username}
+        return { username: account.username }
     }
     throw new Error('Email does not exist');
 }
@@ -179,11 +241,11 @@ exports.forgotPassword = async (req, res) => {
             const secret = process.env.JWT_SECRET + result.username;
             const token = jwt.sign({ email: email, username: result.username }, secret, { expiresIn: '30s' });
             const url = `http://localhost:${process.env.PORT}/reset-password/${result.username}/${token}`;
-        
+
             sendEmail(email, url)
                 .then(res => console.log('Email sent...', res))
                 .catch(err => console.log(err));
-            
+
             res.send('Email sent');
         }
     } catch (error) {
@@ -202,7 +264,7 @@ const updatePassword = async (username, password) => {
     } catch (error) {
         console.log(error);
         return false;
-    }    
+    }
 }
 
 exports.resetPassword = async (req, res) => {
