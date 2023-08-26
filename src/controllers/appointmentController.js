@@ -102,3 +102,12 @@ exports.deleteAppointment = async(req, res) => {
         res.redirect('/admin/appointment')
     } catch(error){}
 }
+
+exports.getAppbyHosID = async (req, res) => {
+    hosID = req.body.hosID;
+    const appoint = await Appointment.find({hospitalID: hosID});
+    // console.log(specialists);
+    res.json({
+        items: appoint
+    });
+}
